@@ -17,10 +17,10 @@ const UserDataSchema = mongoose.Schema({
         type: String
     },
     subTasks: {
-        type: Object
+        type: Array
     },
     tags: {
-        type: Object
+        type: Array
     },
     priority: {
         type: String,
