@@ -30,7 +30,7 @@ const InfoRowTask = ({ taskInfo }) => {
                 <div style={{ display: "flex", flexDirection: "row"}}>
                     <div>{taskInfo === undefined ? '' : calcFinished()}</div>
                     <div>{taskInfo === undefined ? '' : priority}</div>
-                    <button className='button'>Edit</button>
+                    <a href="#edit-task-modal" className='btn-floating modal-trigger green'><i className='material-icons'>edit</i></a>
                 </div>
             </div>
         </li>
