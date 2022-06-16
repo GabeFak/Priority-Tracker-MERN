@@ -34,6 +34,19 @@ const NewTaskBacklogModal = () => {
                 date: Date.now
             });    
         }
+
+        const onClear = () => {
+            setNewTask({
+                category: 'backlog',
+                name: '',
+                description: '',
+                subTasks: '',
+                tags: [],
+                priority: 'low',
+                isFinished: false,
+                date: Date.now
+            });
+        }
     
         return (
             <div id='new-task-modal' className='modal' style={{width: '40%', height: '40%'}}>
@@ -47,6 +60,10 @@ const NewTaskBacklogModal = () => {
                     </div>
                 </div>
                 <div className='modal-footer'>
+                    {/* cancel */}
+                    <a href="#!" onClick={onClear} className="modal-close waves-effect waves-light btn green">Cancel</a>
+
+                    {/* submit */}
                     <a href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
                     {/* create button for setting to 'started' */}
                 </div>

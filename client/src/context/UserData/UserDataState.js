@@ -32,9 +32,9 @@ const UserDataState = props => {
             name: 'Fix garage door',
             description: 'Replace torson rod and make it move up and down again.',
             subTasks: [
-                ['fix torson rod', 1],
-                ['re-assemble', 0],
-                ['get torque right', 0]
+                ['fix torson rod', true],
+                ['re-assemble', false],
+                ['get torque right', false]
 
             ],
             tags: ['homeImprovement', 'garage'],
@@ -47,9 +47,9 @@ const UserDataState = props => {
             name: 'Clean code',
             description: 'Clean final code for project',
             subTasks: [
-                ['Make it readable', 1],
-                ['Delete unnessasary tests', 1],
-                ['recompile', 0]
+                ['Make it readable', true],
+                ['Delete unnessasary tests', true],
+                ['recompile', false]
 
             ],
             tags: ['Programming', 'codeCleanup'],
@@ -62,9 +62,9 @@ const UserDataState = props => {
             name: 'Clean code 3',
             description: 'Clean final code for project 3',
             subTasks: [
-                ['Make it readable 3', 1],
-                ['Delete unnessasary tests 3', 1],
-                ['recompile 3', 1]
+                ['Make it readable 3', true],
+                ['Delete unnessasary tests 3', true],
+                ['recompile 3', true]
 
             ],
             tags: ['Programming', 'codeCleanup'],
@@ -83,14 +83,16 @@ const UserDataState = props => {
         const setLoading = () => dispatch({ type: SET_LOADING});
     // ADD_TASK
         const addTask = (task) => {
-            dispatch({ type: ADD_TASK, payload: task});
+            dispatch({ type: ADD_TASK, payload: task });
         }
     // DELETE_TASK
-
+        const deleteTask = (name) => {
+            dispatch({ type: DELETE_TASK, payload: name });
+        }
     // SET_CURRENT_TASK
         const setCurrentTask = (name) => {
             clearCurrentTask();
-            dispatch({ type: SET_CURRENT_TASK, payload: name});
+            dispatch({ type: SET_CURRENT_TASK, payload: name });
         }
 
     // CLEAR_CURRENT_TASK
@@ -99,7 +101,7 @@ const UserDataState = props => {
         }
     // UPDATE_TASK
         const updateTask = (task) => {
-            dispatch({ type: UPDATE_TASK, payload: task})
+            dispatch({ type: UPDATE_TASK, payload: task })
         }
     // FILTER_TASK
 
@@ -111,6 +113,7 @@ const UserDataState = props => {
             userData: state.userData,
             setLoading: state.setLoading,
             currentTask: state.currentTask,
+            deleteTask,
             addTask,
             updateTask,
             setCurrentTask,

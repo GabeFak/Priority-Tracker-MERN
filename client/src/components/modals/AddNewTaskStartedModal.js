@@ -34,6 +34,19 @@ const AddNewTaskStartedModal = () => {
                 date: Date.now
             });
         }
+        
+        const onClear = () => {
+            setNewTask({
+                category: 'started',
+                name: '',
+                description: '',
+                subTasks: '',
+                tags: [],
+                priority: 'low',
+                isFinished: false,
+                date: Date.now
+            });
+        }
 
         const newSubTask = () => {
             setNewTask({...newTask, subTasks: [...newTask.subTasks, ['', 0]]});
@@ -93,6 +106,10 @@ const AddNewTaskStartedModal = () => {
                 </div>
             </div>
                 <div className='modal-footer'>
+                    {/* cancel */}
+                    <a href="#!" onClick={onClear} className="modal-close waves-effect waves-light btn green">Cancel</a>
+
+                    {/* submit */}
                     <a href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
                     {/* create button for setting to 'started' */}
                 </div>

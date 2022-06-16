@@ -17,7 +17,7 @@ const UpdateTaskModal = () => {
     });
 
     const userDataContext = useContext(UserDataContext);
-    const { currentTask, clearCurrentTask, updateTask} = userDataContext;
+    const { currentTask, clearCurrentTask, updateTask, deleteTask} = userDataContext;
 
     // const [subTasks, setSubtasks] = useState();
 
@@ -26,6 +26,10 @@ const UpdateTaskModal = () => {
     //     setTaskUpdate({...taskUpdate, subTasks: subs});
     //     return taskUpdate;
     // }
+
+    const onDelete = () => {
+        deleteTask(currentTask.name);
+    }
 
     const onSubmit = () => {
         
@@ -88,6 +92,7 @@ const UpdateTaskModal = () => {
                 <div className='row'>
                     {taskUpdate.subTasks === undefined ? <div className='input-feild'>
                             <input type="text" name="subtasks"  />
+                            <input type="checkbox" className="filled-in" />
                             <label htmlFor='subtasks' className='active'>SubDescription</label>
                     </div>
                     : loopThroughSubTasks()}
@@ -113,8 +118,33 @@ const UpdateTaskModal = () => {
                             </select>
                     </div>
                 </div>
+                <div className='row'>
+                    <div className='input-feild'>
+                            <select name='priority'  className='browser-default' value={taskUpdate.category} onChange={e => setTaskUpdate({...taskUpdate, category: e.target.value})}>
+                                <option value='' disabled>
+                                    Select Category
+                                </option>
+                                <option value="started">
+                                    Started
+                                </option>
+                                <option value="inProgress">
+                                    In Progress
+                                </option>
+                                <option value="finished">
+                                    Finished
+                                </option>
+                            </select>
+                    </div>
+                </div>
             </div>
             <div className='modal-footer'>
+                {/* cancel */}
+                <a href="#!" className="modal-close waves-effect waves-light btn green">Cancel</a>
+
+                {/* delete */}
+                <a className='modal-close btn-floating red' onClick={onDelete}><i className='material-icons'>delete</i></a>
+
+                {/* submit */}
                 <a href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
             </div>
         </div>

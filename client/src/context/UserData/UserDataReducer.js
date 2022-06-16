@@ -38,6 +38,13 @@ const Reducer = (state, action) => {
                 ...state,
                 currentTask: null
             }
+        case DELETE_TASK:
+            let selectDataForDeletion = state.userData;
+            let deleted = selectDataForDeletion.filter(task => task.name !== action.payload);
+            return {
+                ...state,
+                userData: deleted
+            }
         case UPDATE_TASK:
             let selectTask = state.userData;
             let tasksMinusUpdate = selectTask.filter(task => task.name !== action.payload.name);
