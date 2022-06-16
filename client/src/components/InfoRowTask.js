@@ -2,22 +2,31 @@ import React from 'react';
 import { useEffect, useContext } from 'react';
 
 import UserDataContext from '../context/UserData/UserDataContext';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 const InfoRowTask = ({ taskInfo }) => {
     const { category, name, description, subTasks, tags, priority, isFinished, date } = taskInfo;
-
+    
     const userDataContext = useContext(UserDataContext);
-    const { setCurrentTask } = userDataContext;
+    const { setCurrentTask, userData} = userDataContext;
+
+    useEffect(() => {
+        const elems = document.querySelectorAll('.collapsible');
+        M.Collapsible.init(elems, {});
+       
+    }, []);
 
     const calcFinished = () => {
         let indexArr = [];
         let count = 0;
-        subTasks.map((sub, index) => {
-            indexArr.push(index);
-            if(sub[1] === 1) {
-                count++;
-            };
-        });
+        if(subTasks !== '') {
+            subTasks.map((sub, index) => {
+                indexArr.push(index);
+                if(sub[1] === 1) {
+                    count++;
+                };
+            });
+        }
         return `${count}/${indexArr.length}`
     }
     const onClick = () => {

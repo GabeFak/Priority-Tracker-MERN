@@ -18,6 +18,13 @@ const Reducer = (state, action) => {
                 ...state,
                 setLaoding: true
             };
+        case ADD_TASK:
+            // let curentState = state.userData;
+            // let addedNewTask = curentState.unshift(action.payload)
+            return {
+                ...state,
+                userData: [action.payload, ...state.userData]
+            }
         case SET_CURRENT_TASK:
             let selectData = state.userData;
             let newCurrent = selectData.filter(task => task.name === action.payload);
@@ -30,6 +37,14 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 currentTask: null
+            }
+        case UPDATE_TASK:
+            let selectTask = state.userData;
+            let tasksMinusUpdate = selectTask.filter(task => task.name !== action.payload.name);
+            tasksMinusUpdate.unshift(action.payload);
+            return{
+                ...state,
+                userData: tasksMinusUpdate
             }
         default:
             return state;

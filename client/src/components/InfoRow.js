@@ -11,17 +11,17 @@ const InfoRow = ({ cat }) => {
 
   
 
-    useEffect(() => {
-        const elems = document.querySelectorAll('.collapsible');
-        M.Collapsible.init(elems, {});
+    // useEffect(() => {
+    //     const elems = document.querySelectorAll('.collapsible');
+    //     M.Collapsible.init(elems, {});
        
-    }, []);
+    // }, []);
 
   return (
     <div className="col s3" style={{overflow: "scroll", height: "100vh", paddingBottom: "64px", paddingLeft: "unset", paddingRight: "unset", msOverflowStyle: "none", scrollbarWidth: "none"}}>
-        <Search />
+        <Search cat={cat}/>
         <div style={{marginBottom: "55px"}}></div>
-            {userData.map((data, index) => {
+            {userData !== null && userData.map((data, index) => {
                 if(data.category === cat) {
                     // console.log(data)
                     return <InfoRowTask key={index} taskInfo={data}/>

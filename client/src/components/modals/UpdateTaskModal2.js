@@ -9,6 +9,7 @@ const UpdateTaskModal = () => {
         category: '',
         name: '',
         description: '',
+        subTasks: '',
         tags: [],
         priority: '',
         isFinished: '',
@@ -16,39 +17,54 @@ const UpdateTaskModal = () => {
     });
 
     const userDataContext = useContext(UserDataContext);
-    const { currentTask, clearCurrentTask } = userDataContext;
+    const { currentTask, clearCurrentTask, updateTask} = userDataContext;
 
-    const [subTasks, setSubtasks] = useState();
+    // const [subTasks, setSubtasks] = useState();
+
+    // const setSubTasksToTaskUpdate = () => {
+    //     let subs = [...subTasks];
+    //     setTaskUpdate({...taskUpdate, subTasks: subs});
+    //     return taskUpdate;
+    // }
 
     const onSubmit = () => {
-        // clearCurrentTask();
-        console.log('close')
+        
+        // let subs = [...subTasks];
+        // setTaskUpdate({...taskUpdate, subTasks: subs});
+        // console.log(setSubTasksToTaskUpdate());
+        updateTask(taskUpdate);
+        console.log(taskUpdate);
     }
 
     useEffect(() => {
+
         //this needs a set timeout 
         if(currentTask !== null) {
-            setSubtasks(null)
-            setTaskUpdate({...taskUpdate, name: currentTask.name, description: currentTask.description});
-            let foo = currentTask.subTasks
-            setSubtasks(foo);
-            console.log(subTasks)
+            // setSubtasks(null)
+            setTaskUpdate({...taskUpdate, name: currentTask.name, description: currentTask.description, isFinished: currentTask.isFinished, priority: currentTask.priority, tags: currentTask.tags, category: currentTask.category, subTasks: currentTask.subTasks});
+            // let foo = currentTask.subTasks
+            // setSubtasks(foo);
         }
+
         console.log(taskUpdate)
-    }, [ currentTask, setTaskUpdate ]);
+        // console.log(subTasks)
+    }, [ currentTask, setTaskUpdate]);
 
-
+    // console.log(taskUpdate)
     const newSubTask = () => {
-        setSubtasks([...subTasks, ['', 0]]);
+        // setSubtasks([...subTasks, ['', 0]]);
+        setTaskUpdate({...taskUpdate, subTasks: [...taskUpdate.subTasks, ['', 0]]});
         loopThroughSubTasks();
     }
 
     const loopThroughSubTasks = () => {
         let subContent = [];
 
-        const ittr = [...subTasks];
+        // const ittr = [...subTasks];
+        const ittr = [...taskUpdate.subTasks];
         ittr.forEach((sub, index) => {
-            subContent.push(<UpdateTaskModelSubItem key={index} sub={sub} index={index} setSubtasks={setSubtasks} subTasks={subTasks}/>)
+            subContent.push(<UpdateTaskModelSubItem key={index} sub={sub} index={index} setTaskUpdate={setTaskUpdate} taskUpdate={taskUpdate}/>)
+            // setSubtasks={setSubtasks} subTasks={subTasks}
         })
         return(subContent)
     }
@@ -70,7 +86,7 @@ const UpdateTaskModal = () => {
                     </div>
                 </div>
                 <div className='row'>
-                    {subTasks === undefined ? <div className='input-feild'>
+                    {taskUpdate.subTasks === undefined ? <div className='input-feild'>
                             <input type="text" name="subtasks"  />
                             <label htmlFor='subtasks' className='active'>SubDescription</label>
                     </div>
@@ -81,7 +97,7 @@ const UpdateTaskModal = () => {
                 </div>
                 <div className='row'>
                     <div className='input-feild'>
-                            <select name='priority'  className='browser-default'>
+                            <select name='priority'  className='browser-default' value={taskUpdate.priority} onChange={e => setTaskUpdate({...taskUpdate, priority: e.target.value})}>
                                 <option value='' disabled>
                                     Select Priority
                                 </option>

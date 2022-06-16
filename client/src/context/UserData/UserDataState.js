@@ -56,6 +56,21 @@ const UserDataState = props => {
             priority: 'med',
             isFinished: false,
             date: Date.now
+        },
+        {    
+            category: 'finished',
+            name: 'Clean code 3',
+            description: 'Clean final code for project 3',
+            subTasks: [
+                ['Make it readable 3', 1],
+                ['Delete unnessasary tests 3', 1],
+                ['recompile 3', 1]
+
+            ],
+            tags: ['Programming', 'codeCleanup'],
+            priority: 'low',
+            isFinished: false,
+            date: Date.now
         }
     ],
     currentTask: null
@@ -67,7 +82,9 @@ const UserDataState = props => {
     // SET_LOADING
         const setLoading = () => dispatch({ type: SET_LOADING});
     // ADD_TASK
-
+        const addTask = (task) => {
+            dispatch({ type: ADD_TASK, payload: task});
+        }
     // DELETE_TASK
 
     // SET_CURRENT_TASK
@@ -81,7 +98,9 @@ const UserDataState = props => {
             dispatch({ type: CLEAR_CURRENT_TASK });
         }
     // UPDATE_TASK
-
+        const updateTask = (task) => {
+            dispatch({ type: UPDATE_TASK, payload: task})
+        }
     // FILTER_TASK
 
     // CLEAR_FILTER_TASK
@@ -92,6 +111,8 @@ const UserDataState = props => {
             userData: state.userData,
             setLoading: state.setLoading,
             currentTask: state.currentTask,
+            addTask,
+            updateTask,
             setCurrentTask,
             clearCurrentTask,
             setLoading

@@ -1,9 +1,23 @@
 import React from 'react';
+import { Fragment } from 'react';
 
-const Search = () => {
+const Search = ({ cat }) => {
     return (
     <div style={{position: "fixed", zIndex: "0", top: "64px", backgroundColor: "white", width: "inherit", marginBottom: "55px", display: 'flex', flexDirection: "row"}}>
-        <div style={{height: "58px",display: 'flex', alignItems: "center"}}><i className="material-icons">control_point</i></div>
+
+        <div style={{height: "58px",display: 'flex', alignItems: "center"}}>
+            {cat !== "backlog" && cat !== "started" ? 
+                ''
+            :
+                <>
+                    {cat === "backlog" ?                  
+                        <a href='#new-task-modal' className='btn-floating modal-trigger green' value="modal"><i className="material-icons" style={{ cursor: "pointer"}} >control_point</i></a>
+                    :
+                        <a href='#new-task-modal-started' className='btn-floating modal-trigger green' value="modal"><i className="material-icons" style={{ cursor: "pointer"}} >control_point</i></a>
+                    }
+                </>
+            }
+        </div>
         <div className="nav-wrapper" syle={{display: 'flex', alignItems: "center"}}>    
             <form>
                 <div className="input-field" >
