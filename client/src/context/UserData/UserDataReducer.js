@@ -18,7 +18,19 @@ const Reducer = (state, action) => {
                 ...state,
                 setLaoding: true
             };
-      
+        case SET_CURRENT_TASK:
+            let selectData = state.userData;
+            let newCurrent = selectData.filter(task => task.name === action.payload);
+            console.log(newCurrent)
+            return {
+                ...state,
+                currentTask: newCurrent[0]
+            };
+        case CLEAR_CURRENT_TASK:
+            return {
+                ...state,
+                currentTask: null
+            }
         default:
             return state;
     };

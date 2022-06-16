@@ -57,7 +57,8 @@ const UserDataState = props => {
             isFinished: false,
             date: Date.now
         }
-    ]
+    ],
+    currentTask: null
     };
     const [state, dispatch] = useReducer(userDataReducer, initialState);
 
@@ -70,9 +71,15 @@ const UserDataState = props => {
     // DELETE_TASK
 
     // SET_CURRENT_TASK
+        const setCurrentTask = (name) => {
+            clearCurrentTask();
+            dispatch({ type: SET_CURRENT_TASK, payload: name});
+        }
 
     // CLEAR_CURRENT_TASK
-
+        const clearCurrentTask = () => {
+            dispatch({ type: CLEAR_CURRENT_TASK });
+        }
     // UPDATE_TASK
 
     // FILTER_TASK
@@ -84,6 +91,9 @@ const UserDataState = props => {
         value={{
             userData: state.userData,
             setLoading: state.setLoading,
+            currentTask: state.currentTask,
+            setCurrentTask,
+            clearCurrentTask,
             setLoading
         }}>
             { props.children }

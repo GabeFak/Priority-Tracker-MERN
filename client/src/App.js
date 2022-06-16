@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
 import UpdateTaskModal from './components/modals/UpdateTaskModal';
+import UpdateTaskModal2 from './components/modals/UpdateTaskModal2';
 
 import UserDataState from './context/UserData/UserDataState';
 import { useEffect } from 'react';
@@ -25,7 +26,8 @@ function App() {
             <Route exact path='/Register' element={<Register />}/>
             <Route exact path='/Dashboard/:userId' element={<Dashboard />}/>
           </Routes>
-          <UpdateTaskModal />
+          {/* <UpdateTaskModal /> */}
+          <UpdateTaskModal2 />
         </Router>
       </UserDataState>
     </div>
