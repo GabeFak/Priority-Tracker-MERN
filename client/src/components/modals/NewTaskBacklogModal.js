@@ -11,14 +11,26 @@ const NewTaskBacklogModal = () => {
             name: '',
             description: '',
             subTasks: '',
-            tags: [],
+            tags: [{tag: 'Tags'}],
             priority: 'low',
             isFinished: false,
-            date: Date.now
+            date: ''
         });
 
+        const newDatePlusAdd = (callback) => {
+            let current = new Date();
+            let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+            let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+            let dateTime = cDate + ' ' + cTime;
+            callback({...newTask, date: dateTime});
+        }
+
+        const addDate = () => {
+            newDatePlusAdd(setNewTask); 
+        }
+
         const onSubmit = () => {
-            if(newTask.name !== ''){
+            if(newTask.name !== '' && newTask.description !== ''){
                 addTask(newTask);
             } else {
             console.log('please add name');
@@ -28,10 +40,10 @@ const NewTaskBacklogModal = () => {
                 name: '',
                 description: '',
                 subTasks: '',
-                tags: [],
+                tags: [{tag: 'Tags'}],
                 priority: 'low',
                 isFinished: false,
-                date: Date.now
+                date: ''
             });    
         }
 
@@ -41,10 +53,10 @@ const NewTaskBacklogModal = () => {
                 name: '',
                 description: '',
                 subTasks: '',
-                tags: [],
+                tags: [{tag: 'Tags'}],
                 priority: 'low',
                 isFinished: false,
-                date: Date.now
+                date: ''
             });
         }
     
@@ -54,8 +66,32 @@ const NewTaskBacklogModal = () => {
                     <h4>Create New Backlog Task</h4>
                     <div className='row'>
                         <div className='input-feild'>
-                            <input type="text" name="name" value={newTask.name} onChange={e => setNewTask({...newTask, name: e.target.value})}/>
+                            <input onClick={addDate} type="text" name="name" value={newTask.name} onChange={e => setNewTask({...newTask, name: e.target.value})}/>
                             <label htmlFor='name' className='active'>Name</label>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='input-feild'>
+                                <input type="text" name="description" value={newTask.description} onChange={e => setNewTask({...newTask, description: e.target.value})}/>
+                                <label htmlFor='description' className='active'>Description</label>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <div className='input-feild'>
+                                <select name='priority'  className='browser-default' value={newTask.priority} onChange={e => setNewTask({...newTask, priority: e.target.value})}>
+                                    <option value='' disabled>
+                                        Select Priority
+                                    </option>
+                                    <option value="low">
+                                        Low
+                                    </option>
+                                    <option value="med">
+                                        Medium
+                                    </option>
+                                    <option value="high">
+                                        High
+                                    </option>
+                                </select>
                         </div>
                     </div>
                 </div>

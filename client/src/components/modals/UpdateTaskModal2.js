@@ -2,6 +2,7 @@
 import React, { useState, useContext, useEffect} from 'react';
 import UserDataContext from '../../context/UserData/UserDataContext';
 import UpdateTaskModelSubItem from './UpdateTaskModelSubItem';
+import Chips from './modalSubComponents/Chips';
 
 const UpdateTaskModal = () => {
 // I belive the issue has to do with something retriggering inside of the modal once clearCurrentTask is called
@@ -13,8 +14,10 @@ const UpdateTaskModal = () => {
         tags: [],
         priority: '',
         isFinished: '',
-        date: Date.now
+        date: ''
     });
+
+    // console.log(taskUpdate.date)
 
     const userDataContext = useContext(UserDataContext);
     const { currentTask, clearCurrentTask, updateTask, deleteTask} = userDataContext;
@@ -37,7 +40,7 @@ const UpdateTaskModal = () => {
         // setTaskUpdate({...taskUpdate, subTasks: subs});
         // console.log(setSubTasksToTaskUpdate());
         updateTask(taskUpdate);
-        console.log(taskUpdate);
+        // console.log(taskUpdate);
     }
 
     useEffect(() => {
@@ -45,12 +48,12 @@ const UpdateTaskModal = () => {
         //this needs a set timeout 
         if(currentTask !== null) {
             // setSubtasks(null)
-            setTaskUpdate({...taskUpdate, name: currentTask.name, description: currentTask.description, isFinished: currentTask.isFinished, priority: currentTask.priority, tags: currentTask.tags, category: currentTask.category, subTasks: currentTask.subTasks});
+            setTaskUpdate({...taskUpdate, name: currentTask.name, description: currentTask.description, isFinished: currentTask.isFinished, priority: currentTask.priority, tags: currentTask.tags, category: currentTask.category, subTasks: currentTask.subTasks, date: currentTask.date});
             // let foo = currentTask.subTasks
             // setSubtasks(foo);
         }
 
-        console.log(taskUpdate)
+        // console.log(taskUpdate)
         // console.log(subTasks)
     }, [ currentTask, setTaskUpdate]);
 
@@ -101,6 +104,9 @@ const UpdateTaskModal = () => {
                     {/* onClick={newSubTask} */}
                 </div>
                 <div className='row'>
+                    <Chips setTask={ setTaskUpdate } task={ taskUpdate } />
+                </div>
+                <div className='row'>
                     <div className='input-feild'>
                             <select name='priority'  className='browser-default' value={taskUpdate.priority} onChange={e => setTaskUpdate({...taskUpdate, priority: e.target.value})}>
                                 <option value='' disabled>
@@ -138,6 +144,9 @@ const UpdateTaskModal = () => {
                 </div>
             </div>
             <div className='modal-footer'>
+                {/* Date Created Display */}
+
+                <div>{`Date created: ${taskUpdate.date}`}</div>
                 {/* cancel */}
                 <a href="#!" className="modal-close waves-effect waves-light btn green">Cancel</a>
 

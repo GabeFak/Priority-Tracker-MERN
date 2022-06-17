@@ -7,7 +7,8 @@ import {
     UPDATE_TASK,
     FILTER_TASK,
     CLEAR_FILTER_TASK,
-    ORGANIZE_BY_PRIORITY
+    ORGANIZE_BY_PRIORITY,
+    SET_BACKLOGGED_TO_STARTED
 } from '../types';
 
 const Reducer = (state, action) => {
@@ -28,7 +29,7 @@ const Reducer = (state, action) => {
         case SET_CURRENT_TASK:
             let selectData = state.userData;
             let newCurrent = selectData.filter(task => task.name === action.payload);
-            console.log(newCurrent)
+            // console.log(newCurrent)
             return {
                 ...state,
                 currentTask: newCurrent[0]
@@ -49,9 +50,19 @@ const Reducer = (state, action) => {
             let selectTask = state.userData;
             let tasksMinusUpdate = selectTask.filter(task => task.name !== action.payload.name);
             tasksMinusUpdate.unshift(action.payload);
-            return{
+            return {
                 ...state,
                 userData: tasksMinusUpdate
+            }
+        case SET_BACKLOGGED_TO_STARTED:
+            let selectBackLoggedToStarted = state.userData;
+            let setTostartedCat = selectBackLoggedToStarted.filter(task => task.name === action.payload);
+            let restOfState = selectBackLoggedToStarted.filter(task => task.name !== action.payload);
+            setTostartedCat.catagory = 'started';
+            let newUserData = restOfState.unshift(setTostartedCat);
+            return {
+                ...state,
+                userData: newUserData
             }
         default:
             return state;

@@ -6,33 +6,46 @@ const AddNewTaskStartedModal = () => {
         const userDataContext = useContext(UserDataContext);
         const { addTask } = userDataContext;
 
+        const newDatePlusAdd = (callback) => {
+            let current = new Date();
+            let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+            let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+            let dateTime = cDate + ' ' + cTime;
+            callback({...newTask, date: dateTime});
+        }
+
         const [newTask, setNewTask] = useState({
             category: 'started',
             name: '',
             description: '',
             subTasks: '',
-            tags: [],
+            tags: [{tag: 'Tags'}],
             priority: 'low',
             isFinished: false,
-            date: Date.now
+            date: ''
         });
 
+        const addDate = () => {
+            newDatePlusAdd(setNewTask); 
+        }
+
         const onSubmit = () => {
-            if(newTask.name !== '' && newTask.description !== ''){
-                addTask(newTask);
-            } else {
-                console.log('please add name and description');
-            }
-            setNewTask({
-                category: 'started',
-                name: '',
-                description: '',
-                subTasks: '',
-                tags: [],
-                priority: 'low',
-                isFinished: false,
-                date: Date.now
-            });
+                if(newTask.name !== '' && newTask.description !== ''){
+                    addTask(newTask)
+                } else {
+                    console.log('please add name and description');
+                }
+                setNewTask({
+                    category: 'started',
+                    name: '',
+                    description: '',
+                    subTasks: '',
+                    tags: [{tag: 'Tags'}],
+                    priority: 'low',
+                    isFinished: false,
+                    date: ''
+                });
+
         }
         
         const onClear = () => {
@@ -41,10 +54,10 @@ const AddNewTaskStartedModal = () => {
                 name: '',
                 description: '',
                 subTasks: '',
-                tags: [],
+                tags: [{tag: 'Tags'}],
                 priority: 'low',
                 isFinished: false,
-                date: Date.now
+                date: ''
             });
         }
 
@@ -68,16 +81,16 @@ const AddNewTaskStartedModal = () => {
                     <h4>Create New Backlog Task</h4>
                     <div className='row'>
                         <div className='input-feild'>
-                            <input type="text" name="name" value={newTask.name} onChange={e => setNewTask({...newTask, name: e.target.value})}/>
+                            <input onClick={addDate} type="text" name="name" value={newTask.name} onChange={e => setNewTask({...newTask, name: e.target.value})}/>
                             <label htmlFor='name' className='active'>Name</label>
                         </div>
                     </div>
                     <div className='row'>
-                    <div className='input-feild'>
-                            <input type="text" name="description" value={newTask.description} onChange={e => setNewTask({...newTask, description: e.target.value})}/>
-                            <label htmlFor='description' className='active'>Description</label>
+                        <div className='input-feild'>
+                                <input type="text" name="description" value={newTask.description} onChange={e => setNewTask({...newTask, description: e.target.value})}/>
+                                <label htmlFor='description' className='active'>Description</label>
+                        </div>
                     </div>
-                </div>
                 <div className='row'>
                     {newTask.subTasks === '' ? <div className='input-feild'>
                             <input type="text" name="subtasks" value={newTask.subTasks} onChange={e => setNewTask({...newTask, subTasks: [[e.target.value, 0]] })} />
@@ -86,6 +99,7 @@ const AddNewTaskStartedModal = () => {
                     : loopThroughSubTasks()}
                     <button><i className='material-icons' onClick={newSubTask}>add</i></button> 
                 </div>
+
                 <div className='row'>
                     <div className='input-feild'>
                             <select name='priority'  className='browser-default' value={newTask.priority} onChange={e => setNewTask({...newTask, priority: e.target.value})}>

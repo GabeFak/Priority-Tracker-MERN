@@ -1,20 +1,36 @@
 import React from 'react';
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { Fragment } from 'react';
 import UserDataContext from '../context/UserData/UserDataContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 const InfoRowTask = ({ taskInfo }) => {
     const { category, name, description, subTasks, tags, priority, isFinished, date } = taskInfo;
-    
     const userDataContext = useContext(UserDataContext);
-    const { setCurrentTask, userData, deleteTask} = userDataContext;
+    const { setCurrentTask, deleteTask, updateTask, setToStarted } = userDataContext;
+
+    const [updateCagatory, setUpdateCatagory] = useState({
+        category,
+        name,
+        description,
+        subTasks,
+        tags,
+        priority,
+        isFinished,
+        date
+    });
+
 
     useEffect(() => {
         const elems = document.querySelectorAll('.collapsible');
         M.Collapsible.init(elems, {});
-       
     }, []);
+
+    const setTaskToStarted = () => {
+        setUpdateCatagory({...updateCagatory, category: 'started'});
+        updateTask(updateCagatory);
+        // setToStarted(name)
+    }
 
     const onDelete = () => {
         deleteTask(name);
@@ -56,16 +72,17 @@ const InfoRowTask = ({ taskInfo }) => {
                 <div style={{ display: "flex", flexDirection: "row"}}>
 
 
-                    {category !== "backlog" ? 
+                {category !== "backlog" ? 
                     <>
                         <div>{taskInfo === undefined ? '' : calcFinished()}</div>
                         <div>{taskInfo === undefined ? '' : priority}</div>
+                        <div>{taskInfo === undefined ? '' : date}</div>
                         <a href="#edit-task-modal-2" className='btn-floating modal-trigger green' value="modal" onClick={onClick}><i className='material-icons'>edit</i></a>
                     </>
                 : 
                     <>
                         <a className='btn-floating red' onClick={onDelete} ><i className='material-icons'>delete</i></a>
-                        <a className='btn-floating modal-trigger orange'><i className='material-icons'>arrow_forward</i></a>
+                        <a className='btn-floating orange' onClick={setTaskToStarted}><i className='material-icons'>arrow_forward</i></a>
                     </>
                 }
 

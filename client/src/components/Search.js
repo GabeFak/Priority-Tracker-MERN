@@ -7,7 +7,13 @@ const Search = ({ cat }) => {
 
         <div style={{height: "58px",display: 'flex', alignItems: "center"}}>
             {cat !== "backlog" && cat !== "started" ? 
-                ''
+                <>
+                {cat !== "finished" ?                  
+                    ''
+                :
+                    <a href='#' className='btn-floating modal-trigger red' value="modal"><i className="material-icons" style={{ cursor: "pointer"}} >delete</i></a>
+                }
+                </>
             :
                 <>
                     {cat === "backlog" ?                  

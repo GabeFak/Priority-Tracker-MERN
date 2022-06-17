@@ -10,7 +10,8 @@ import {
     UPDATE_TASK,
     FILTER_TASK,
     CLEAR_FILTER_TASK,
-    ORGANIZE_BY_PRIORITY
+    ORGANIZE_BY_PRIORITY,
+    SET_BACKLOGGED_TO_STARTED
 } from '../types';
 
 const UserDataState = props => {
@@ -22,10 +23,10 @@ const UserDataState = props => {
             name: 'Finish Dishes',
             description: '',
             subTasks: [],
-            tags: [],
+            tags: [{tag: 'Tags'}],
             priority: 'low',
             isFinished: false,
-            date: Date.now
+            date: "2022-6-17 11:32:44"
         },
         {    
             category: 'started',
@@ -37,10 +38,10 @@ const UserDataState = props => {
                 ['get torque right', false]
 
             ],
-            tags: ['homeImprovement', 'garage'],
+            tags: [{tag: 'Tags'}, {tag: 'homeImprovement'}, {tag: 'garage'}],
             priority: 'med',
             isFinished: false,
-            date: Date.now
+            date: "2022-6-17 11:32:44"
         },
         {    
             category: 'inProgress',
@@ -52,10 +53,10 @@ const UserDataState = props => {
                 ['recompile', false]
 
             ],
-            tags: ['Programming', 'codeCleanup'],
+            tags: [{tag: 'Tags'}, {tag: 'Programming'}, {tag: 'codeCleanup'}],
             priority: 'med',
             isFinished: false,
-            date: Date.now
+            date: "2022-6-17 11:32:44"
         },
         {    
             category: 'finished',
@@ -67,10 +68,10 @@ const UserDataState = props => {
                 ['recompile 3', true]
 
             ],
-            tags: ['Programming', 'codeCleanup'],
+            tags: [{tag: 'Tags'}, {tag: 'Programming'}, {tag: 'codeCleanup'}],
             priority: 'low',
             isFinished: false,
-            date: Date.now
+            date: "2022-6-17 11:32:44"
         }
     ],
     currentTask: null
@@ -107,6 +108,11 @@ const UserDataState = props => {
 
     // CLEAR_FILTER_TASK
 
+    // SET_BACKLOGGED_TO_STARTED
+        const setToStarted = (name) => {
+            dispatch({ type: SET_BACKLOGGED_TO_STARTED, payload: name });
+        }
+
     return(
         <userDataContext.Provider
         value={{
@@ -114,6 +120,7 @@ const UserDataState = props => {
             setLoading: state.setLoading,
             currentTask: state.currentTask,
             deleteTask,
+            setToStarted,
             addTask,
             updateTask,
             setCurrentTask,
