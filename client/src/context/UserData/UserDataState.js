@@ -10,7 +10,7 @@ import {
     UPDATE_TASK,
     FILTER_TASK,
     CLEAR_FILTER_TASK,
-    ORGANIZE_BY_PRIORITY,
+    DELETE_FINAL_ROW,
     SET_BACKLOGGED_TO_STARTED
 } from '../types';
 
@@ -74,11 +74,15 @@ const UserDataState = props => {
             date: "2022-6-17 11:32:44"
         }
     ],
-    currentTask: null
+    currentTask: null,
+    filtered: null
     };
     const [state, dispatch] = useReducer(userDataReducer, initialState);
 
-    // ORGANIZE_BY_PRIORITY
+    // DELETE_FINAL_ROW
+        const deleteFinalRow = () => {
+            dispatch({ type: DELETE_FINAL_ROW });
+        }
 
     // SET_LOADING
         const setLoading = () => dispatch({ type: SET_LOADING});
@@ -105,6 +109,9 @@ const UserDataState = props => {
             dispatch({ type: UPDATE_TASK, payload: task })
         }
     // FILTER_TASK
+    const filterTasks = (input) => {
+        dispatch({ type: FILTER_TASK, payload: input})
+    }
 
     // CLEAR_FILTER_TASK
 
@@ -119,10 +126,13 @@ const UserDataState = props => {
             userData: state.userData,
             setLoading: state.setLoading,
             currentTask: state.currentTask,
+            filtered: state.filtered,
+            deleteFinalRow,
             deleteTask,
             setToStarted,
             addTask,
             updateTask,
+            filterTasks,
             setCurrentTask,
             clearCurrentTask,
             setLoading

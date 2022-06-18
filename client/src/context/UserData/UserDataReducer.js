@@ -7,13 +7,20 @@ import {
     UPDATE_TASK,
     FILTER_TASK,
     CLEAR_FILTER_TASK,
-    ORGANIZE_BY_PRIORITY,
-    SET_BACKLOGGED_TO_STARTED
+    SET_BACKLOGGED_TO_STARTED,
+    DELETE_FINAL_ROW
 } from '../types';
 
 const Reducer = (state, action) => {
     switch(action.type) {
-      
+
+        case DELETE_FINAL_ROW:
+            let deleteFinished = state.userData;
+            let rowDeleted = deleteFinished.filter(cat => cat.category !== 'finished');
+            return {
+                ...state,
+                userData: rowDeleted
+            };
         case SET_LOADING:
             return {
                 ...state,
@@ -25,7 +32,7 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 userData: [action.payload, ...state.userData]
-            }
+            };
         case SET_CURRENT_TASK:
             let selectData = state.userData;
             let newCurrent = selectData.filter(task => task.name === action.payload);
@@ -38,14 +45,18 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 currentTask: null
-            }
+            };
         case DELETE_TASK:
             let selectDataForDeletion = state.userData;
             let deleted = selectDataForDeletion.filter(task => task.name !== action.payload);
             return {
                 ...state,
                 userData: deleted
-            }
+            };
+        // case FILTER_TASK:
+        //     return {
+            
+        //     }
         case UPDATE_TASK:
             let selectTask = state.userData;
             let tasksMinusUpdate = selectTask.filter(task => task.name !== action.payload.name);
@@ -53,7 +64,7 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 userData: tasksMinusUpdate
-            }
+            };
         case SET_BACKLOGGED_TO_STARTED:
             let selectBackLoggedToStarted = state.userData;
             let setTostartedCat = selectBackLoggedToStarted.filter(task => task.name === action.payload);
@@ -63,7 +74,7 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 userData: newUserData
-            }
+            };
         default:
             return state;
     };

@@ -9,7 +9,7 @@ const InfoRowTask = ({ taskInfo }) => {
     const userDataContext = useContext(UserDataContext);
     const { setCurrentTask, deleteTask, updateTask, setToStarted } = userDataContext;
 
-    const [updateCagatory, setUpdateCatagory] = useState({
+    const [updateCagatoryAndIsFinished, setUpdateCagatoryAndIsFinished] = useState({
         category,
         name,
         description,
@@ -27,8 +27,8 @@ const InfoRowTask = ({ taskInfo }) => {
     }, []);
 
     const setTaskToStarted = () => {
-        setUpdateCatagory({...updateCagatory, category: 'started'});
-        updateTask(updateCagatory);
+        setUpdateCagatoryAndIsFinished({...updateCagatoryAndIsFinished, category: 'started'});
+        updateTask(updateCagatoryAndIsFinished);
         // setToStarted(name)
     }
 
@@ -49,6 +49,13 @@ const InfoRowTask = ({ taskInfo }) => {
         }
         return `${count}/${indexArr.length}`
     }
+
+    // if(count === indexArr.length) {
+    //     setUpdateCagatoryAndIsFinished({...updateCagatoryAndIsFinished, isFinished: true});
+    //     updateTask(updateCagatoryAndIsFinished);
+    // }
+
+
     const onClick = () => {
         setCurrentTask(name);
     }

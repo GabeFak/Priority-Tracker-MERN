@@ -1,7 +1,17 @@
 import React from 'react';
-import { Fragment } from 'react';
+import { Fragment, useContext} from 'react';
+import UserDataContext from '../context/UserData/UserDataContext';
+
 
 const Search = ({ cat }) => {
+    const userDataContext = useContext(UserDataContext);
+    const { deleteFinalRow } = userDataContext;
+
+    const deleteFinishedRow = () => {
+        // console.log('hli')
+        deleteFinalRow();
+    }
+
     return (
     <div style={{position: "fixed", zIndex: "0", top: "64px", backgroundColor: "white", width: "inherit", marginBottom: "55px", display: 'flex', flexDirection: "row"}}>
 
@@ -11,7 +21,7 @@ const Search = ({ cat }) => {
                 {cat !== "finished" ?                  
                     ''
                 :
-                    <a href='#' className='btn-floating modal-trigger red' value="modal"><i className="material-icons" style={{ cursor: "pointer"}} >delete</i></a>
+                    <a className='btn-floating red' onClick={deleteFinishedRow}><i className="material-icons" style={{ cursor: "pointer"}} >delete</i></a>
                 }
                 </>
             :
