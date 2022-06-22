@@ -21,6 +21,7 @@ const UserDataState = props => {
     const initialState = {
         setLaoding: false,
         userData: [   
+        // Test Data
         {    
             category: 'backlog',
             name: 'Finish Dishes',
@@ -86,42 +87,48 @@ const UserDataState = props => {
     const [state, dispatch] = useReducer(userDataReducer, initialState);
 
     // DELETE_FINAL_ROW
-        const deleteFinalRow = () => {
-            dispatch({ type: DELETE_FINAL_ROW });
-        }
+    const deleteFinalRow = () => {
+        dispatch({ type: DELETE_FINAL_ROW });
+    };
 
     // SET_LOADING
-        const setLoading = () => dispatch({ type: SET_LOADING});
+    const setLoading = () => dispatch({ type: SET_LOADING });
+
     // ADD_TASK
-        const addTask = (task) => {
-            dispatch({ type: ADD_TASK, payload: task });
-        }
+    const addTask = (task) => {
+        dispatch({ type: ADD_TASK, payload: task });
+    };
+
     // DELETE_TASK
-        const deleteTask = (name) => {
-            dispatch({ type: DELETE_TASK, payload: name });
-        }
+    const deleteTask = (name) => {
+        dispatch({ type: DELETE_TASK, payload: name });
+    };
+
     // SET_CURRENT_TASK
-        const setCurrentTask = (name) => {
-            clearCurrentTask();
-            dispatch({ type: SET_CURRENT_TASK, payload: name });
-        }
+    const setCurrentTask = (name) => {
+        clearCurrentTask();
+        dispatch({ type: SET_CURRENT_TASK, payload: name });
+    };
+
     // CLEAR_CURRENT_TASK
-        const clearCurrentTask = () => {
-            dispatch({ type: CLEAR_CURRENT_TASK });
-        }
+    const clearCurrentTask = () => {
+        dispatch({ type: CLEAR_CURRENT_TASK });
+    };
+
     // UPDATE_TASK
-        const updateTask = (task) => {
-            dispatch({ type: UPDATE_TASK, payload: task })
-        }
+    const updateTask = (task) => {
+        dispatch({ type: UPDATE_TASK, payload: task });
+    };
+
     // FILTER_TASK
     const filterTasks = (input) => {
-        dispatch({ type: FILTER_TASK, payload: input})
-    }
+        dispatch({ type: FILTER_TASK, payload: input });
+    };
 
     // CLEAR_FILTER_TASK
     const clearFilter = () => {
         dispatch({ type: CLEAR_FILTER_TASK });
-    }
+    };
 
     // SET_CURRENT_FILTER_SELECT
     const setCurrentFilterSelect = (catagory) => {
@@ -129,22 +136,23 @@ const UserDataState = props => {
         clearFilter();
         setCurtentStateCat(catagory);
         dispatch({ type: SET_CURRENT_FILTER_SELECT, payload: catagory });
-    }
+    };
 
     // SET_CURRENT_STATE_CAT
     const setCurtentStateCat = (cat) => {
         dispatch({ type: SET_CURRENT_STATE_CAT, payload: cat });
-    }
+    };
 
     // CLEAR_CURRENT_FILTER_SELECT
     const clearCurrentFilterSelect = () => {
         dispatch({ type: CLEAR_CURRENT_FILTER_SELECT });
-    }
+    };
 
     // SET_BACKLOGGED_TO_STARTED
-        const setToStarted = (name) => {
-            dispatch({ type: SET_BACKLOGGED_TO_STARTED, payload: name });
-        }
+    const setToStarted = (name) => {
+        dispatch({ type: SET_BACKLOGGED_TO_STARTED, payload: name });
+    };
+
     return(
         <userDataContext.Provider
         value={{

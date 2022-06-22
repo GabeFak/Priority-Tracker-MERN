@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import UserDataContext from '../context/UserData/UserDataContext';
+import React from 'react';
 import InfoRow from './InfoRow';
-
 
 const Dashboard = () => {
     const createCols = () => {
@@ -16,12 +14,12 @@ const Dashboard = () => {
                 catagory = 'inProgress';
             } else if(i === 3) {
                 catagory =  'finished';
-            }
+            };
             cols.push(<div key={i}><InfoRow id={i} cat={catagory}/></div>);
-        }
+        };
         return cols;
-    }
-
+    };
+//add loading conditional here
   return (
     <div className="row">
         {createCols()}
