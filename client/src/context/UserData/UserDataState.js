@@ -96,27 +96,32 @@ const UserDataState = props => {
 
     // ADD_TASK
     const addTask = (task) => {
+        setLoading();
         dispatch({ type: ADD_TASK, payload: task });
     };
 
     // DELETE_TASK
     const deleteTask = (name) => {
+        setLoading();
         dispatch({ type: DELETE_TASK, payload: name });
     };
 
     // SET_CURRENT_TASK
     const setCurrentTask = (name) => {
+        setLoading();
         clearCurrentTask();
         dispatch({ type: SET_CURRENT_TASK, payload: name });
     };
 
     // CLEAR_CURRENT_TASK
     const clearCurrentTask = () => {
+        setLoading();
         dispatch({ type: CLEAR_CURRENT_TASK });
     };
 
     // UPDATE_TASK
     const updateTask = (task) => {
+        setLoading();
         dispatch({ type: UPDATE_TASK, payload: task });
     };
 
@@ -150,6 +155,7 @@ const UserDataState = props => {
 
     // SET_BACKLOGGED_TO_STARTED
     const setToStarted = (name) => {
+        setLoading();
         dispatch({ type: SET_BACKLOGGED_TO_STARTED, payload: name });
     };
 

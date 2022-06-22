@@ -16,7 +16,7 @@ const Search = ({ cat }) => {
 
     const searchFilter = (e) => {
         if(text.current.value !== '') {
-            if(text.current.value.indexOf('\\') === Number){
+            if(!text.current.value.includes('\\')){
                 console.log(text.current.value.indexOf('\\'))
                 filterTasks(e.target.value);
             }

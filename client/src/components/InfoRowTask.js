@@ -68,19 +68,22 @@ const InfoRowTask = ({ taskInfo, cat }) => {
                             ""
                         :
                             <>
-                                {taskInfo === undefined ? '' : listFinished()}
+                                {/* taskInfo === undefined ? '' :  */}
+                                {listFinished()}
                             </>
                         }
                     </div> 
                 </div>
                 <div className="collapsible-body">
-                    <span>{taskInfo === undefined ? '' : description}</span>
+                    {/* taskInfo === undefined ? '' :  */}
+                    <span>{description}</span>
                     <div style={{ display: "flex", flexDirection: "row"}}>
                         {category !== "backlog" ? 
                             <>
-                                <div>{taskInfo === undefined ? '' : listFinished()}</div>
-                                <div>{taskInfo === undefined ? '' : priority}</div>
-                                <div>{taskInfo === undefined ? '' : date}</div>
+                                {/* taskInfo === undefined ? '' :  */}
+                                <div>{listFinished()}</div>
+                                <div>{priority}</div>
+                                <div>{date}</div>
                                 <a href="#edit-task-modal-2" className='btn-floating modal-trigger green' value="modal" onClick={onClick}><i className='material-icons'>edit</i></a>
                             </>
                         : 

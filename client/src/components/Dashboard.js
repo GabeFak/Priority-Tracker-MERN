@@ -1,7 +1,11 @@
 import React from 'react';
 import InfoRow from './InfoRow';
+import { useContext } from 'react';
+import UserDataContext from '../context/UserData/UserDataContext';
 
 const Dashboard = () => {
+    const userDataContext = useContext(UserDataContext);
+    const { setLaoding } = userDataContext;
     const createCols = () => {
         const cols = []
         for(let i = 0; i < 4; i++) {
@@ -19,12 +23,15 @@ const Dashboard = () => {
         };
         return cols;
     };
-//add loading conditional here
-  return (
-    <div className="row">
-        {createCols()}
-    </div>
-  )
+    if( setLaoding ) {
+        return '';
+    } else {
+        return (
+            <div className="row">
+                {createCols()}
+            </div>
+        )
+    };
 };
 
 export default Dashboard;
