@@ -1,15 +1,44 @@
 import React from 'react';
-import { Fragment, useContext} from 'react';
+import { Fragment, useContext, useRef, useEffect } from 'react';
 import UserDataContext from '../context/UserData/UserDataContext';
 
 
 const Search = ({ cat }) => {
     const userDataContext = useContext(UserDataContext);
-    const { deleteFinalRow } = userDataContext;
+    const { deleteFinalRow, setCurrentFilterSelect, filterTasks, filtered, clearFilter } = userDataContext;
+
+    const text = useRef('');
+
+    useEffect(() => {
+        if(filtered === null) {
+            text.current.value = '';
+        }
+    }, []);
+
+    const searchFilter = (e) => {
+        // if(text.current.value !== '\\'){
+        //     text.current.value.replace(/\\/g, '&#92;');
+        // }
+        if(text.current.value !== '') {
+            if(text.current.value.indexOf('\\') === Number){
+                console.log(text.current.value.indexOf('\\'))
+                filterTasks(e.target.value);
+            }
+        }else{
+            clearFilter();
+        };
+        if(filtered === []) {
+            clearFilter();
+        }
+    };
 
     const deleteFinishedRow = () => {
         // console.log('hli')
         deleteFinalRow();
+    }
+
+    const changeSelectState = () => {
+        setCurrentFilterSelect(cat)
     }
 
     return (
@@ -37,7 +66,7 @@ const Search = ({ cat }) => {
         <div className="nav-wrapper" syle={{display: 'flex', alignItems: "center"}}>    
             <form>
                 <div className="input-field" >
-                    <input id="search" type="search" required style={{margin: "unset"}}/>
+                    <input id="search" ref={text} onFocus={changeSelectState} onChange={searchFilter} type="search" required style={{margin: "unset"}}/>
                     <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
                     <i className="material-icons">close</i>
                 </div>

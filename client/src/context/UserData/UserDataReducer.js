@@ -8,7 +8,10 @@ import {
     FILTER_TASK,
     CLEAR_FILTER_TASK,
     SET_BACKLOGGED_TO_STARTED,
-    DELETE_FINAL_ROW
+    DELETE_FINAL_ROW,
+    SET_CURRENT_FILTER_SELECT,
+    CLEAR_CURRENT_FILTER_SELECT,
+    SET_CURRENT_STATE_CAT
 } from '../types';
 
 const Reducer = (state, action) => {
@@ -53,10 +56,41 @@ const Reducer = (state, action) => {
                 ...state,
                 userData: deleted
             };
-        // case FILTER_TASK:
-        //     return {
-            
-        //     }
+        case FILTER_TASK:
+            let test = state.clickCurrentFilter.filter(input => {
+                const regex = new RegExp(`${action.payload}`, 'gi');
+                return input.name.match(regex) || input.priority.match(regex);
+            })
+            // if(test.length == 0){
+            //     test = null
+            // }
+            return {
+                ...state,
+                filtered: test
+            };
+        case CLEAR_FILTER_TASK:
+            return {
+                ...state, 
+                filtered: null
+            }
+        case SET_CURRENT_FILTER_SELECT:
+            let unfiltered = state.userData;
+            let addToFilterSelect = unfiltered.filter(selectCat => selectCat.category === action.payload);
+            return {
+                ...state,
+                clickCurrentFilter: addToFilterSelect
+            };
+        case SET_CURRENT_STATE_CAT:
+            return {
+                ...state,
+                curtentStateCat: action.payload
+            }
+        case CLEAR_CURRENT_FILTER_SELECT:
+            return {
+                ...state,
+                clickCurrentFilter: null,
+                curtentStateCat: null
+            };   
         case UPDATE_TASK:
             let selectTask = state.userData;
             let tasksMinusUpdate = selectTask.filter(task => task.name !== action.payload.name);

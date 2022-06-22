@@ -4,10 +4,10 @@ import { Fragment } from 'react';
 import UserDataContext from '../context/UserData/UserDataContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const InfoRowTask = ({ taskInfo }) => {
+const InfoRowTask = ({ taskInfo, cat}) => {
     const { category, name, description, subTasks, tags, priority, isFinished, date } = taskInfo;
     const userDataContext = useContext(UserDataContext);
-    const { setCurrentTask, deleteTask, updateTask, setToStarted } = userDataContext;
+    const { setCurrentTask, deleteTask, updateTask, setToStarted, filtered, clickCurrentFilter, curtentStateCat} = userDataContext;
 
     const [updateCagatoryAndIsFinished, setUpdateCagatoryAndIsFinished] = useState({
         category,
@@ -24,12 +24,13 @@ const InfoRowTask = ({ taskInfo }) => {
     useEffect(() => {
         const elems = document.querySelectorAll('.collapsible');
         M.Collapsible.init(elems, {});
-    }, []);
+        if(updateCagatoryAndIsFinished.category === 'started'){
+            updateTask(updateCagatoryAndIsFinished);
+        }
+    }, [updateCagatoryAndIsFinished]);
 
     const setTaskToStarted = () => {
         setUpdateCagatoryAndIsFinished({...updateCagatoryAndIsFinished, category: 'started'});
-        updateTask(updateCagatoryAndIsFinished);
-        // setToStarted(name)
     }
 
     const onDelete = () => {
@@ -47,7 +48,13 @@ const InfoRowTask = ({ taskInfo }) => {
                 };
             });
         }
-        return `${count}/${indexArr.length}`
+        // return `${count}/${indexArr.length}`
+        return [count, indexArr.length]
+    }
+
+    const listFinished = () => {
+        let finished = calcFinished();
+        return `${finished[0]}/${finished[1]}`
     }
 
     // if(count === indexArr.length) {
@@ -68,12 +75,16 @@ const InfoRowTask = ({ taskInfo }) => {
                     ""
                 :
                     <>
-                        {taskInfo === undefined ? '' : calcFinished()}
+                        {taskInfo === undefined ? '' : listFinished()}
                     </>
                 }
                     
                 </div> 
             </div>
+            
+
+
+            
             <div className="collapsible-body">
                 <span>{taskInfo === undefined ? '' : description}</span>
                 <div style={{ display: "flex", flexDirection: "row"}}>
@@ -81,7 +92,7 @@ const InfoRowTask = ({ taskInfo }) => {
 
                 {category !== "backlog" ? 
                     <>
-                        <div>{taskInfo === undefined ? '' : calcFinished()}</div>
+                        <div>{taskInfo === undefined ? '' : listFinished()}</div>
                         <div>{taskInfo === undefined ? '' : priority}</div>
                         <div>{taskInfo === undefined ? '' : date}</div>
                         <a href="#edit-task-modal-2" className='btn-floating modal-trigger green' value="modal" onClick={onClick}><i className='material-icons'>edit</i></a>
@@ -92,8 +103,6 @@ const InfoRowTask = ({ taskInfo }) => {
                         <a className='btn-floating orange' onClick={setTaskToStarted}><i className='material-icons'>arrow_forward</i></a>
                     </>
                 }
-
-
                 </div>
             </div>
         </li>

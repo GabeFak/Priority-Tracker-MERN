@@ -11,7 +11,10 @@ import {
     FILTER_TASK,
     CLEAR_FILTER_TASK,
     DELETE_FINAL_ROW,
-    SET_BACKLOGGED_TO_STARTED
+    SET_BACKLOGGED_TO_STARTED,
+    SET_CURRENT_FILTER_SELECT,
+    CLEAR_CURRENT_FILTER_SELECT,
+    SET_CURRENT_STATE_CAT
 } from '../types';
 
 const UserDataState = props => {
@@ -74,6 +77,9 @@ const UserDataState = props => {
             date: "2022-6-17 11:32:44"
         }
     ],
+    clickCurrentFilter: null,
+    curtentStateCat: null,
+    filtered: null,
     currentTask: null,
     filtered: null
     };
@@ -99,7 +105,6 @@ const UserDataState = props => {
             clearCurrentTask();
             dispatch({ type: SET_CURRENT_TASK, payload: name });
         }
-
     // CLEAR_CURRENT_TASK
         const clearCurrentTask = () => {
             dispatch({ type: CLEAR_CURRENT_TASK });
@@ -114,12 +119,32 @@ const UserDataState = props => {
     }
 
     // CLEAR_FILTER_TASK
+    const clearFilter = () => {
+        dispatch({ type: CLEAR_FILTER_TASK });
+    }
+
+    // SET_CURRENT_FILTER_SELECT
+    const setCurrentFilterSelect = (catagory) => {
+        clearCurrentFilterSelect();
+        clearFilter();
+        setCurtentStateCat(catagory);
+        dispatch({ type: SET_CURRENT_FILTER_SELECT, payload: catagory });
+    }
+
+    // SET_CURRENT_STATE_CAT
+    const setCurtentStateCat = (cat) => {
+        dispatch({ type: SET_CURRENT_STATE_CAT, payload: cat });
+    }
+
+    // CLEAR_CURRENT_FILTER_SELECT
+    const clearCurrentFilterSelect = () => {
+        dispatch({ type: CLEAR_CURRENT_FILTER_SELECT });
+    }
 
     // SET_BACKLOGGED_TO_STARTED
         const setToStarted = (name) => {
             dispatch({ type: SET_BACKLOGGED_TO_STARTED, payload: name });
         }
-
     return(
         <userDataContext.Provider
         value={{
@@ -127,12 +152,17 @@ const UserDataState = props => {
             setLoading: state.setLoading,
             currentTask: state.currentTask,
             filtered: state.filtered,
+            clickCurrentFilter: state.clickCurrentFilter,
+            filtered: state.filtered,
+            curtentStateCat: state.curtentStateCat,
+            setCurrentFilterSelect,
             deleteFinalRow,
             deleteTask,
             setToStarted,
             addTask,
             updateTask,
             filterTasks,
+            clearFilter,
             setCurrentTask,
             clearCurrentTask,
             setLoading
