@@ -29,43 +29,37 @@ import PrivateRoute from './components/Routing/PrivateRoute';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token);
-}
+};
 
 function App() {
 
   useEffect(() => {
     M.AutoInit();
-  })
+  });
 
   return (
     <div className="App">
       <AlertState>
-      <AuthState>
-        <UserDataState>
-          
-            <Router>
-              <Header />
-              {/* <Alerts /> */}
-                <Routes>
-                  <Route exact path='/' element={<Login />}/>
-                  <Route exact path='/Register' element={<Register />}/>
-                  {/* <Route exact path='/Dashboard' element={<Dashboard />}/> */}
-                  <Route path="/Dashboard" element={<PrivateRoute />}>
-                  <Route path="/Dashboard" element= {<Dashboard />}/></Route>
-                  {/* /:userId */}
-                </Routes>
-                
-                {/* <UpdateTaskModal /> */}
-                <UpdateTaskModal2 />
-                <NewTaskBacklogModal />
-                <AddNewTaskStartedModal />
-            </Router>
-          
-        </UserDataState>
-      </AuthState>
+        <AuthState>
+          <UserDataState>
+              <Router>
+                <Header />
+                  <Routes>
+                    <Route exact path='/' element={<Login />}/>
+                    <Route exact path='/Register' element={<Register />}/>
+                    <Route path="/Dashboard" element={<PrivateRoute />}>
+                      <Route path="/Dashboard" element= {<Dashboard />}/>
+                    </Route>
+                  </Routes>
+                  <UpdateTaskModal2 />
+                  <NewTaskBacklogModal />
+                  <AddNewTaskStartedModal />
+              </Router>
+          </UserDataState>
+        </AuthState>
       </AlertState>
     </div>
-  );
-}
+  )
+};
 
 export default App;

@@ -7,24 +7,24 @@ import AuthContext from '../context/Auth/AuthContext';
 
 
 const Register = () => {
-
     const alertContext = useContext(AlertContext);
     const authContext = useContext(AuthContext)
     const { register, error, clearErrors, isAuthenticated} = authContext;
     const { setAlert } = alertContext;
 
     const nav = useNavigate();
+
     useEffect(() => {
         if(isAuthenticated) {
-            nav('/dashboard')
+            nav('/dashboard');
         }
 
-        if(error === 'User already exists'){
+        if(error === 'User already exists') {
             setAlert(error, 'danger');
             clearErrors();
         }
         //eslint-disable-next-line
-    }, [error, isAuthenticated])
+    }, [error, isAuthenticated]);
 
     const [user, setUser] = useState({
       name: '',
@@ -49,13 +49,12 @@ const Register = () => {
                 email,
                 password
             });
-        }
-    }
+        };
+    };
 
     return (
         <div className="row container" >
             <div>Register</div>
-            
             <form onSubmit={onSubmit} className="col s12">
                 <Alerts />
                 <div className="row">
@@ -82,18 +81,14 @@ const Register = () => {
                         <label htmlFor="password2">Retype Password</label>
                     </div>
                 </div>
-                
                 <div className="row">
                     <div className="input-field col s6">
                     {/* <a className="waves-effect waves-light btn wide"> */}
                         <input type="submit" value="Register"></input>
                         {/* </a> */}
-                        
                     </div>
-                </div>
-                   
+                </div>  
             </form>
-
         </div>
     )
 };

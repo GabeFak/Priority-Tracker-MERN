@@ -5,6 +5,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 
 const InfoRowTask = ({ taskInfo, cat }) => {
     const { category, name, description, subTasks, tags, priority, isFinished, date } = taskInfo;
+    
     const userDataContext = useContext(UserDataContext);
     const { setCurrentTask, deleteTask, updateTask } = userDataContext;
 
@@ -18,7 +19,6 @@ const InfoRowTask = ({ taskInfo, cat }) => {
         isFinished,
         date
     });
-
 
     useEffect(() => {
         const elems = document.querySelectorAll('.collapsible');

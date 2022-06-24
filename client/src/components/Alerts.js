@@ -11,9 +11,8 @@ const Alerts = () => {
             <div key={alert.id} className={`alert alert-${alert.type}`}>
                 {alert.msg}
             </div>
-        )
+        ))
     )
-)
 };
 
 export default Alerts;

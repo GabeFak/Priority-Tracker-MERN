@@ -14,17 +14,18 @@ const Login = () => {
     const { setAlert } = alertContext;
 
     const nav = useNavigate();
+    
     useEffect(() => {
         if(isAuthenticated) {
-            nav('/dashboard')
-        }
+            nav('/dashboard');
+        };
 
         if(error === 'Invalid credentials'){
             setAlert(error, 'danger');
             clearErrors();
-        }
+        };
         //eslint-disable-next-line
-    }, [error, isAuthenticated])
+    }, [error, isAuthenticated]);
 
 
     const [user, setUser] = useState({
@@ -39,53 +40,43 @@ const Login = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         if(email === '' || password === '') {
-            setAlert('Please fill in all fields', 'danger')
+            setAlert('Please fill in all fields', 'danger');
         } else {
             logIn({
                 email,
                 password
-            })
-        }
-    }
+            });
+        };
+    };
 
     return (
         <div className="row container" >
-          <div>Login</div>
-            <form onSubmit={onSubmit} className="col s12">
-                <Alerts />
-                {/* <div className="row"> */}
-                    {/* <div className="input-field col s6">
-                        <input id="first_name" type="text" className="validate" />
-                        <label htmlFor="first_name">First Name</label>
-                    </div> */}
-                {/* <div className="input-field col s12">
-                    <input id="userName" type="text" className="validate" />
-                    <label htmlFor="userName" >User Name</label>
-                </div>
-              </div> */}
-              <div className="row">
-                  <div className="input-field col s12">
-                      <input id="email" type="email" name='email' value={email} onChange={onChange} className="validate" />
-                      <label htmlFor="email">Email</label>
-                  </div>
-              </div>
-              <div className="row">
-                  <div className="input-field col s12">
-                      <input id="password" type="password" name='password' value={password} onChange={onChange} className="validate" />
-                      <label htmlFor="password">Password</label>
-                  </div>
-              </div>
-              <div className="row">
-                  <div className="input-field col s6">
-                  {/* <a className="waves-effect waves-light btn wide"><input type="submit" value="Login"></input></a> */}
-                  <input type="submit" value="Register"></input>
-                  </div>
-                  <div className="input-field col s6">
-                      <a className="waves-effect waves-light btn wide">Register</a>
-                      
-                  </div>
-              </div>
-          </form>
+            <div>Login</div>
+                <form onSubmit={onSubmit} className="col s12">
+                    <Alerts />
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="email" type="email" name='email' value={email} onChange={onChange} className="validate" />
+                            <label htmlFor="email">Email</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s12">
+                            <input id="password" type="password" name='password' value={password} onChange={onChange} className="validate" />
+                            <label htmlFor="password">Password</label>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="input-field col s6">
+                            {/* <a className="waves-effect waves-light btn wide"><input type="submit" value="Login"></input></a> */}
+                            <input type="submit" value="Register"></input>
+                        </div>
+                        <div className="input-field col s6">
+                            <a className="waves-effect waves-light btn wide">Register</a>
+                        
+                        </div>
+                    </div>
+                </form>
         </div>
     )
 };
