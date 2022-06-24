@@ -16,6 +16,15 @@
 .wide {
     width: 100%;
 }
+
+.brand-logo {
+  margin-left: 40px;
+}
+
+.hide-on-med-and-down{
+  margin-right: 40px;
+}
+
   @media only screen and (min-width: 601px) {
     .container {
       width: 45%;

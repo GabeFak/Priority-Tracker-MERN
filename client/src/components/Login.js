@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect} from 'react';
 import '../materializeOverride.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import AlertContext from '../context/Alert/AlertContext';
 import Alerts from './Alerts';
 import AuthContext from '../context/Auth/AuthContext';
@@ -14,7 +14,7 @@ const Login = () => {
     const { setAlert } = alertContext;
 
     const nav = useNavigate();
-    
+
     useEffect(() => {
         if(isAuthenticated) {
             nav('/dashboard');
@@ -68,11 +68,10 @@ const Login = () => {
                     </div>
                     <div className="row">
                         <div className="input-field col s6">
-                            {/* <a className="waves-effect waves-light btn wide"><input type="submit" value="Login"></input></a> */}
-                            <input type="submit" value="Register"></input>
+                            <button className="waves-effect waves-light btn wide" type="submit" value="Login" >Login</button>
                         </div>
                         <div className="input-field col s6">
-                            <a className="waves-effect waves-light btn wide">Register</a>
+                            <Link className="waves-effect waves-light btn wide" to="/Register">Register</Link>
                         
                         </div>
                     </div>

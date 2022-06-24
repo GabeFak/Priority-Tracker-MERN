@@ -83,9 +83,7 @@ const Register = () => {
                 </div>
                 <div className="row">
                     <div className="input-field col s6">
-                    {/* <a className="waves-effect waves-light btn wide"> */}
-                        <input type="submit" value="Register"></input>
-                        {/* </a> */}
+                        <button className="waves-effect waves-light btn wide" type="submit" value="Register">Register</button>
                     </div>
                 </div>  
             </form>
