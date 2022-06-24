@@ -1,6 +1,7 @@
 import React, {Fragment, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/Auth/AuthContext';
+import '../materializeOverride.css'
 
 const Header = () => {
     const authContext = useContext(AuthContext);

@@ -26,4 +26,35 @@
       width: 30%;
     }
   }
+  /* OverWrites Right links display being set to none */
+  @media only screen and (max-width: 992px){
+    .hide-on-med-and-down{
+        display:inline !important
+    }
+  }
+  
+  /* OverWrites Logo moving to center */
+  @media only screen and (max-width: 992px) {
 
+    nav .brand-logo {
+      left: 0%;
+      -webkit-transform: none !important;
+      transform: none !important;
+    }
+
+    nav .brand-logo.left,
+    nav .brand-logo.right {
+      padding:0;
+      -webkit-transform:none;
+      transform:none;
+    } 
+
+    nav .brand-logo.left {
+      left:0rem;
+    } 
+
+    nav .brand-logo.right{
+      right:0rem;
+      left:auto;
+    }
+  }
