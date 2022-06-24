@@ -1,11 +1,19 @@
 import React from 'react';
 import InfoRow from './InfoRow';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import UserDataContext from '../context/UserData/UserDataContext';
+import AuthContext from '../context/Auth/AuthContext';
 
 const Dashboard = () => {
     const userDataContext = useContext(UserDataContext);
-    const { setLaoding } = userDataContext;
+    const authContext = useContext(AuthContext);
+    const { loadUser } = authContext;
+    const { setLoading } = userDataContext;
+
+    useEffect(() => {
+        loadUser();
+    }, [])
+    
     const createCols = () => {
         const cols = []
         for(let i = 0; i < 4; i++) {
@@ -23,15 +31,15 @@ const Dashboard = () => {
         };
         return cols;
     };
-    if( setLaoding ) {
-        return '';
-    } else {
+    // if( setLoading ) {
+    //     return '';
+    // } else {
         return (
             <div className="row">
                 {createCols()}
             </div>
         )
-    };
+    // };
 };
 
 export default Dashboard;

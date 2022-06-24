@@ -3,12 +3,15 @@ import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import setAuthToken from './Utils/setAuthToken';
 
 //components
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
+import Alerts from './components/Alerts';
 
 //modals
 // import UpdateTaskModal from './components/modals/UpdateTaskModal';
@@ -18,28 +21,49 @@ import AddNewTaskStartedModal from './components/modals/AddNewTaskStartedModal';
 
 //context
 import UserDataState from './context/UserData/UserDataState';
-import { useEffect } from 'react';
+import AuthState from './context/Auth/AuthState';
+import AlertState from './context/Alert/AlertState';
+
+//private route
+import PrivateRoute from './components/Routing/PrivateRoute';
+
+if(localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 function App() {
+
   useEffect(() => {
     M.AutoInit();
   })
+
   return (
     <div className="App">
-      <UserDataState>
-        <Router>
-          <Header />
-            <Routes>
-              <Route exact path='/' element={<Login />}/>
-              <Route exact path='/Register' element={<Register />}/>
-              <Route exact path='/Dashboard/:userId' element={<Dashboard />}/>
-            </Routes>
-            {/* <UpdateTaskModal /> */}
-            <UpdateTaskModal2 />
-            <NewTaskBacklogModal />
-            <AddNewTaskStartedModal />
-        </Router>
-      </UserDataState>
+      <AlertState>
+      <AuthState>
+        <UserDataState>
+          
+            <Router>
+              <Header />
+              {/* <Alerts /> */}
+                <Routes>
+                  <Route exact path='/' element={<Login />}/>
+                  <Route exact path='/Register' element={<Register />}/>
+                  {/* <Route exact path='/Dashboard' element={<Dashboard />}/> */}
+                  <Route path="/Dashboard" element={<PrivateRoute />}>
+                  <Route path="/Dashboard" element= {<Dashboard />}/></Route>
+                  {/* /:userId */}
+                </Routes>
+                
+                {/* <UpdateTaskModal /> */}
+                <UpdateTaskModal2 />
+                <NewTaskBacklogModal />
+                <AddNewTaskStartedModal />
+            </Router>
+          
+        </UserDataState>
+      </AuthState>
+      </AlertState>
     </div>
   );
 }

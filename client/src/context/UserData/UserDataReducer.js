@@ -23,7 +23,7 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 userData: rowDeleted,
-                loading: false
+                setLoading: false
             };
 
         case SET_LOADING:
@@ -36,7 +36,7 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 userData: [action.payload, ...state.userData],
-                loading: false
+                setLoading: false
             };
 
         case SET_CURRENT_TASK:
@@ -45,14 +45,14 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 currentTask: newCurrent[0],
-                loading: false
+                setLoading: false
             };
 
         case CLEAR_CURRENT_TASK:
             return {
                 ...state,
                 currentTask: null,
-                loading: false
+                setLoading: false
             };
 
         case DELETE_TASK:
@@ -61,7 +61,7 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 userData: deleted,
-                loading: false
+                setLoading: false
             };
 
         case FILTER_TASK:
@@ -72,14 +72,14 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 filtered: test,
-                loading: false
+                setLoading: false
             };
 
         case CLEAR_FILTER_TASK:
             return {
                 ...state, 
                 filtered: null,
-                loading: false
+                setLoading: false
             };
 
         case SET_CURRENT_FILTER_SELECT:
@@ -88,14 +88,14 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 clickCurrentFilter: addToFilterSelect,
-                loading: false
+                setLoading: false
             };
 
         case SET_CURRENT_STATE_CAT:
             return {
                 ...state,
                 curtentStateCat: action.payload,
-                loading: false
+                setLoading: false
             };
 
         case CLEAR_CURRENT_FILTER_SELECT:
@@ -103,7 +103,7 @@ const Reducer = (state, action) => {
                 ...state,
                 clickCurrentFilter: null,
                 curtentStateCat: null,
-                loading: false
+                setLoading: false
             };   
 
         case UPDATE_TASK:
@@ -113,7 +113,7 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 userData: tasksMinusUpdate,
-                loading: false
+                setLoading: false
             };
 
         case SET_BACKLOGGED_TO_STARTED:
@@ -125,7 +125,7 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 userData: newUserData,
-                loading: false
+                setLoading: false
             };
 
         default:

@@ -19,7 +19,7 @@ import {
 
 const UserDataState = props => {
     const initialState = {
-        setLaoding: false,
+        setLoading: false,
         userData: [   
         // Test Data
         {    
