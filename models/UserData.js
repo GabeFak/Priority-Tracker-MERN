@@ -32,9 +32,12 @@ const UserDataSchema = mongoose.Schema({
         required: true,
         default: new Boolean(false)
     },
-    date: {
-        type: Date,
-        default: Date.now
+    // date: {
+    //     type: Date,
+    //     default: Date.now
+    // }
+        date: {
+        type: String
     }
 });
 

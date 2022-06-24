@@ -30,7 +30,7 @@ const AddNewTaskStartedModal = () => {
     };
 
     const onSubmit = () => {
-        if(newTask.name !== '' && newTask.description !== '') {
+        if(newTask.name !== '' && newTask.description !== '' && newTask.subTasks !== '') {
             addTask(newTask)
         } else {
             // console.log('please add name and description');

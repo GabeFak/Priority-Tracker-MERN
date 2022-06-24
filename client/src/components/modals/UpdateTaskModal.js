@@ -5,7 +5,7 @@ import UpdateTaskModelSubItem from './UpdateTaskModelSubItem';
 
 const UpdateTaskModal = () => {
     const userDataContext = useContext(UserDataContext);
-    const { currentTask, clearCurrentTask} = userDataContext;
+    const { currentTask, clearCurrentTask } = userDataContext;
     // const { category, name, description, subTasks, tags, priority, isFinished } = currentTask;
     // const [subTaskItem, setSubTaskItem] = useState({
     //     subTasks: []

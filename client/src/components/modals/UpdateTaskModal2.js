@@ -8,10 +8,11 @@ const UpdateTaskModal = () => {
     const { currentTask, updateTask, deleteTask} = userDataContext;
 
     const [taskUpdate, setTaskUpdate] = useState({
+        _id: '',
         category: '',
         name: '',
         description: '',
-        subTasks: '',
+        subTasks: [],
         tags: [],
         priority: '',
         isFinished: '',
@@ -19,16 +20,22 @@ const UpdateTaskModal = () => {
     });
 
     const onDelete = () => {
-        deleteTask(currentTask.name);
+        deleteTask(currentTask._id);
     };
 
     const onSubmit = () => {
-        updateTask(taskUpdate);
+        if(taskUpdate.subTasks === [''] ) {
+            setTaskUpdate({ ...taskUpdate, subTasks: []});
+            updateTask(taskUpdate);
+        } else {
+            updateTask(taskUpdate);
+        }
+        
     };
 
     useEffect(() => {
         if(currentTask !== null) {
-            setTaskUpdate({...taskUpdate, name: currentTask.name, description: currentTask.description, isFinished: currentTask.isFinished, priority: currentTask.priority, tags: currentTask.tags, category: currentTask.category, subTasks: currentTask.subTasks, date: currentTask.date});
+            setTaskUpdate({...taskUpdate, name: currentTask.name, description: currentTask.description, isFinished: currentTask.isFinished, priority: currentTask.priority, tags: currentTask.tags, category: currentTask.category, subTasks: currentTask.subTasks, date: currentTask.date, _id: currentTask._id});
         };
     }, [ currentTask, setTaskUpdate]);
 
@@ -41,7 +48,13 @@ const UpdateTaskModal = () => {
         let subContent = [];
         const ittr = [...taskUpdate.subTasks];
         ittr.forEach((sub, index) => {
-            subContent.push(<UpdateTaskModelSubItem key={index} sub={sub} index={index} setTaskUpdate={setTaskUpdate} taskUpdate={taskUpdate}/>);
+            if(index === 0) {
+                subContent.push(<UpdateTaskModelSubItem key={index} sub={sub} index={index} setTaskUpdate={setTaskUpdate} taskUpdate={taskUpdate} display='none'/>);
+                console.log(0)
+            } else {
+                subContent.push(<UpdateTaskModelSubItem key={index} sub={sub} index={index} setTaskUpdate={setTaskUpdate} taskUpdate={taskUpdate} display='block'/>);
+            }
+            
         });
         return(subContent);
     };
@@ -63,15 +76,16 @@ const UpdateTaskModal = () => {
                     </div>
                 </div>
                 <div className='row'>
-                    {taskUpdate.subTasks === undefined ? 
+                    {/* {taskUpdate.subTasks === [''] ? 
                         <div className='input-feild'>
+                            {console.log('hi')}
                             <input type="text" name="subtasks"  />
                             <input type="checkbox" className="filled-in" />
                             <label htmlFor='subtasks' className='active'>SubDescription</label>
                         </div>
-                    : 
-                    loopThroughSubTasks()
-                    }
+                    :  */}
+                    {loopThroughSubTasks()}
+                    {/* } */}
                     <button><i className='material-icons' onClick={newSubTask}>add</i></button> 
                 </div>
                 <div className='row'>

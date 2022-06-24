@@ -1,14 +1,18 @@
 import React, {Fragment, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../context/Auth/AuthContext';
-import '../materializeOverride.css'
+import '../materializeOverride.css';
+import UserDataContext from '../context/UserData/UserDataContext';
 
 const Header = () => {
+    const userDataContext = useContext(UserDataContext)
     const authContext = useContext(AuthContext);
     const { isAuthenticated, logOut, user } = authContext;
+    const { clearTasks } = userDataContext;
 
     const onLogout = () => {
         logOut();
+        clearTasks();
     };
 
     const authLinks = (

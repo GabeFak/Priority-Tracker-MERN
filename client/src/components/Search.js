@@ -62,7 +62,7 @@ const Search = ({ cat }) => {
                     <div className="input-field" >
                         <input id="search" ref={text} onFocus={changeSelectState} onChange={searchFilter} type="search" required style={{margin: "unset"}}/>
                         <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
-                        <i className="material-icons">close</i>
+                        <i className="material-icons" style={{display: "inline"}}>close</i>
                     </div>
                 </form>
             </div>

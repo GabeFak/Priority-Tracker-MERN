@@ -8,10 +8,11 @@ const Dashboard = () => {
     const userDataContext = useContext(UserDataContext);
     const authContext = useContext(AuthContext);
     const { loadUser } = authContext;
-    const { setLoading } = userDataContext;
+    const { loading, getTasks } = userDataContext;
 
     useEffect(() => {
         loadUser();
+        getTasks();
     }, [])
     
     const createCols = () => {
@@ -31,16 +32,13 @@ const Dashboard = () => {
         };
         return cols;
     };
-    // Fix Loading State
-    // if( setLoading ) {
-    //     return '';
-    // } else {
+
         return (
             <div className="row">
-                {createCols()}
+                {loading ? '' : createCols()}
+
             </div>
         )
-    // };
 };
 
 export default Dashboard;

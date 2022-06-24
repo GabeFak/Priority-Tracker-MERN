@@ -4,12 +4,12 @@ import UserDataContext from '../context/UserData/UserDataContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 const InfoRowTask = ({ taskInfo, cat }) => {
-    const { category, name, description, subTasks, tags, priority, isFinished, date } = taskInfo;
-    
+    const { category, name, description, subTasks, tags, priority, isFinished, date, _id } = taskInfo;
     const userDataContext = useContext(UserDataContext);
-    const { setCurrentTask, deleteTask, updateTask } = userDataContext;
+    const { setCurrentTask, deleteTask, updateTask, getTasks, setToStarted } = userDataContext;
 
     const [updateCagatoryAndIsFinished, setUpdateCagatoryAndIsFinished] = useState({
+        _id,
         category,
         name,
         description,
@@ -20,6 +20,7 @@ const InfoRowTask = ({ taskInfo, cat }) => {
         date
     });
 
+
     useEffect(() => {
         const elems = document.querySelectorAll('.collapsible');
         M.Collapsible.init(elems, {});
@@ -27,13 +28,15 @@ const InfoRowTask = ({ taskInfo, cat }) => {
             updateTask(updateCagatoryAndIsFinished);
         };
     }, [updateCagatoryAndIsFinished]);
+    // updateCagatoryAndIsFinished
 
     const setTaskToStarted = () => {
         setUpdateCagatoryAndIsFinished({...updateCagatoryAndIsFinished, category: 'started'});
+        // setToStarted(_id);
     };
 
     const onDelete = () => {
-        deleteTask(name);
+        deleteTask(_id);
     };
 
     const calcFinished = () => {
@@ -62,7 +65,7 @@ const InfoRowTask = ({ taskInfo, cat }) => {
     return (
         <ul className="collapsible">
             <li>
-                <div className="collapsible-header" ><i className="material-icons">filter_drama</i> {taskInfo === undefined ? '' : name}
+                <div className="collapsible-header" ><i style={{display: "inline"}} className="material-icons">filter_drama</i> {taskInfo === undefined ? '' : name}
                     <div>
                         {category === "backlog" ? 
                             ""

@@ -11,32 +11,47 @@ import {
     DELETE_FINAL_ROW,
     SET_CURRENT_FILTER_SELECT,
     CLEAR_CURRENT_FILTER_SELECT,
-    SET_CURRENT_STATE_CAT
+    SET_CURRENT_STATE_CAT,
+    TASK_ERROR,
+    GET_TASKS,
+    SET_LOADING_FALSE,
+    CLEAR_TASKS
 } from '../types';
 
 const Reducer = (state, action) => {
     switch(action.type) {
-
+        case GET_TASKS:
+            // console.log(action.payload)
+            return {
+                ...state,
+                userData: action.payload
+            };
+        case SET_LOADING_FALSE:
+            // console.log(state.userData)
+            return {
+                ...state,
+                loading: false
+            };
         case DELETE_FINAL_ROW:
             let deleteFinished = state.userData;
             let rowDeleted = deleteFinished.filter(cat => cat.category !== 'finished');
             return {
                 ...state,
                 userData: rowDeleted,
-                setLoading: false
+                loading: false
             };
 
         case SET_LOADING:
             return {
                 ...state,
-                setLaoding: true
+                loading: true
             };
 
         case ADD_TASK:
             return {
                 ...state,
                 userData: [action.payload, ...state.userData],
-                setLoading: false
+                loading: false
             };
 
         case SET_CURRENT_TASK:
@@ -45,23 +60,23 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 currentTask: newCurrent[0],
-                setLoading: false
+                loading: false
             };
 
         case CLEAR_CURRENT_TASK:
             return {
                 ...state,
                 currentTask: null,
-                setLoading: false
+                loading: false
             };
 
         case DELETE_TASK:
             let selectDataForDeletion = state.userData;
-            let deleted = selectDataForDeletion.filter(task => task.name !== action.payload);
+            let deleted = selectDataForDeletion.filter(task => task._id !== action.payload);
             return {
                 ...state,
                 userData: deleted,
-                setLoading: false
+                loading: false
             };
 
         case FILTER_TASK:
@@ -72,14 +87,14 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 filtered: test,
-                setLoading: false
+                loading: false
             };
 
         case CLEAR_FILTER_TASK:
             return {
                 ...state, 
                 filtered: null,
-                setLoading: false
+                loading: false
             };
 
         case SET_CURRENT_FILTER_SELECT:
@@ -88,14 +103,14 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 clickCurrentFilter: addToFilterSelect,
-                setLoading: false
+                loading: false
             };
 
         case SET_CURRENT_STATE_CAT:
             return {
                 ...state,
                 curtentStateCat: action.payload,
-                setLoading: false
+                loading: false
             };
 
         case CLEAR_CURRENT_FILTER_SELECT:
@@ -103,31 +118,69 @@ const Reducer = (state, action) => {
                 ...state,
                 clickCurrentFilter: null,
                 curtentStateCat: null,
-                setLoading: false
+                loading: false
             };   
-
+        case CLEAR_TASKS:
+            return {
+                ...state,
+                userData: [],
+                clickCurrentFilter: null,
+                curtentStateCat: null,
+                filtered: null,
+                currentTask: null,
+                filtered: null,
+                error: null,
+                loading: false
+            };
         case UPDATE_TASK:
-            let selectTask = state.userData;
-            let tasksMinusUpdate = selectTask.filter(task => task.name !== action.payload.name);
-            tasksMinusUpdate.unshift(action.payload);
+            // let selectTask = state.userData;
+            // let tasksMinusUpdate = selectTask.filter(task => task._id !== action.payload._id);
+            // tasksMinusUpdate.unshift(action.payload);
             return {
                 ...state,
-                userData: tasksMinusUpdate,
-                setLoading: false
+                // userData: tasksMinusUpdate,
+                userData: state.userData.map(task => {
+                    if(task._id !== action.payload._id) {
+                        return task
+                    }else{
+                        return action.payload
+                    }}),
+                loading: false
             };
-
-        case SET_BACKLOGGED_TO_STARTED:
-            let selectBackLoggedToStarted = state.userData;
-            let setTostartedCat = selectBackLoggedToStarted.filter(task => task.name === action.payload);
-            let restOfState = selectBackLoggedToStarted.filter(task => task.name !== action.payload);
-            setTostartedCat.catagory = 'started';
-            let newUserData = restOfState.unshift(setTostartedCat);
+        case TASK_ERROR: 
             return {
                 ...state,
-                userData: newUserData,
-                setLoading: false
+                error: action.payload
             };
 
+        // case SET_BACKLOGGED_TO_STARTED:
+            // let selectBackLoggedToStarted = [...state.userData];
+            // let setTostartedCat = selectBackLoggedToStarted.filter(task => task._id === action.payload);
+            // let restOfState = selectBackLoggedToStarted.filter(task => task._id !== action.payload);
+            // setTostartedCat.catagory = 'started';
+            // console.log(selectBackLoggedToStarted)
+            // let newUserData = restOfState.unshift(setTostartedCat);
+            // let newUserData = selectBackLoggedToStarted.map(task => {
+            //     if(task._id === action.payload) {
+            //         task.category = "started";
+            //         return task;
+            //     } else {
+            //         return task;
+            //     }
+            // });
+            // console.log(newUserData)
+            // return {
+            //     ...state,
+            //     userData: state.userData.map(task => {
+            //                 if(task._id === action.payload) {
+            //                     task.category = "started";
+            //                     return task;
+            //                 } else {
+            //                     return task;
+            //                 }
+            //             }),
+            //     loading: false
+            // };
         default:
             return state;
     };

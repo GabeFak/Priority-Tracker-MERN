@@ -1,6 +1,9 @@
 import React, { useReducer } from 'react';
 import userDataContext from './UserDataContext';
 import userDataReducer from './UserDataReducer';
+import {v4 as uuid} from 'uuid';
+import axios from 'axios';
+
 import {
     SET_LOADING,
     ADD_TASK,
@@ -14,69 +17,74 @@ import {
     SET_BACKLOGGED_TO_STARTED,
     SET_CURRENT_FILTER_SELECT,
     CLEAR_CURRENT_FILTER_SELECT,
-    SET_CURRENT_STATE_CAT
+    SET_CURRENT_STATE_CAT,
+    TASK_ERROR,
+    GET_TASKS,
+    CLEAR_TASKS,
+    SET_LOADING_FALSE
 } from '../types';
 
 const UserDataState = props => {
     const initialState = {
-        setLoading: false,
+        loading: false,
+        error: null,
         userData: [   
         // Test Data
-        {    
-            category: 'backlog',
-            name: 'Finish Dishes',
-            description: '',
-            subTasks: [],
-            tags: [{tag: 'Tags'}],
-            priority: 'low',
-            isFinished: false,
-            date: "2022-6-17 11:32:44"
-        },
-        {    
-            category: 'started',
-            name: 'Fix garage door',
-            description: 'Replace torson rod and make it move up and down again.',
-            subTasks: [
-                ['fix torson rod', true],
-                ['re-assemble', false],
-                ['get torque right', false]
+        // {   id: '123', 
+        //     category: 'backlog',
+        //     name: 'Finish Dishes',
+        //     description: '',
+        //     subTasks: [],
+        //     tags: [{tag: 'Tags'}],
+        //     priority: 'low',
+        //     isFinished: false,
+        //     date: "2022-6-17 11:32:44"
+        // },
+        // {   id: '1234', 
+        //     category: 'started',
+        //     name: 'Fix garage door',
+        //     description: 'Replace torson rod and make it move up and down again.',
+        //     subTasks: [
+        //         ['fix torson rod', true],
+        //         ['re-assemble', false],
+        //         ['get torque right', false]
 
-            ],
-            tags: [{tag: 'Tags'}, {tag: 'homeImprovement'}, {tag: 'garage'}],
-            priority: 'med',
-            isFinished: false,
-            date: "2022-6-17 11:32:44"
-        },
-        {    
-            category: 'inProgress',
-            name: 'Clean code',
-            description: 'Clean final code for project',
-            subTasks: [
-                ['Make it readable', true],
-                ['Delete unnessasary tests', true],
-                ['recompile', false]
+        //     ],
+        //     tags: [{tag: 'Tags'}, {tag: 'homeImprovement'}, {tag: 'garage'}],
+        //     priority: 'med',
+        //     isFinished: false,
+        //     date: "2022-6-17 11:32:44"
+        // },
+        // {   id: '12345', 
+        //     category: 'inProgress',
+        //     name: 'Clean code',
+        //     description: 'Clean final code for project',
+        //     subTasks: [
+        //         ['Make it readable', true],
+        //         ['Delete unnessasary tests', true],
+        //         ['recompile', false]
 
-            ],
-            tags: [{tag: 'Tags'}, {tag: 'Programming'}, {tag: 'codeCleanup'}],
-            priority: 'med',
-            isFinished: false,
-            date: "2022-6-17 11:32:44"
-        },
-        {    
-            category: 'finished',
-            name: 'Clean code 3',
-            description: 'Clean final code for project 3',
-            subTasks: [
-                ['Make it readable 3', true],
-                ['Delete unnessasary tests 3', true],
-                ['recompile 3', true]
+        //     ],
+        //     tags: [{tag: 'Tags'}, {tag: 'Programming'}, {tag: 'codeCleanup'}],
+        //     priority: 'med',
+        //     isFinished: false,
+        //     date: "2022-6-17 11:32:44"
+        // },
+        // {   id: '123456', 
+        //     category: 'finished',
+        //     name: 'Clean code 3',
+        //     description: 'Clean final code for project 3',
+        //     subTasks: [
+        //         ['Make it readable 3', true],
+        //         ['Delete unnessasary tests 3', true],
+        //         ['recompile 3', true]
 
-            ],
-            tags: [{tag: 'Tags'}, {tag: 'Programming'}, {tag: 'codeCleanup'}],
-            priority: 'low',
-            isFinished: false,
-            date: "2022-6-17 11:32:44"
-        }
+        //     ],
+        //     tags: [{tag: 'Tags'}, {tag: 'Programming'}, {tag: 'codeCleanup'}],
+        //     priority: 'low',
+        //     isFinished: false,
+        //     date: "2022-6-17 11:32:44"
+        // }
     ],
     clickCurrentFilter: null,
     curtentStateCat: null,
@@ -85,6 +93,28 @@ const UserDataState = props => {
     filtered: null
     };
     const [state, dispatch] = useReducer(userDataReducer, initialState);
+
+    // SET_LOADING_FALSE
+    const setLoadingFalse = () => dispatch({ type: SET_LOADING_FALSE });
+
+    // GET_TASKS
+    const getTasks = async () => {
+        setLoading();
+        try {
+            const res = await axios.get('/api/userData');
+
+            dispatch({ type: GET_TASKS, payload: res.data });
+            // setTimeout(() => {
+                setLoadingFalse();
+            // }, 750)
+
+        } catch (err) {
+            dispatch({ type: TASK_ERROR, payload: err.responce.msg});
+        }
+        // task.id = uuid();
+        
+        
+    };
 
     // DELETE_FINAL_ROW
     const deleteFinalRow = () => {
@@ -95,15 +125,55 @@ const UserDataState = props => {
     const setLoading = () => dispatch({ type: SET_LOADING });
 
     // ADD_TASK
-    const addTask = (task) => {
-        setLoading();
-        dispatch({ type: ADD_TASK, payload: task });
+    const addTask = async (task) => {
+        const config = {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        };
+
+        try {
+            const res = await axios.post('/api/userData', task, config);
+
+            dispatch({ type: ADD_TASK, payload: res.data });
+        } catch (err) {
+            dispatch({ type: TASK_ERROR, payload: err.responce.msg});
+        }
+        // task.id = uuid();
+        // setLoading();
+        
+    };
+
+    // UPDATE_TASK
+    const updateTask = async (task) => {
+        const config = {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        };
+
+        try {
+            const res = await axios.put(`/api/userData/${task._id}`, task, config);
+
+            dispatch({ type: UPDATE_TASK, payload: res.data });
+        } catch (err) {
+            dispatch({ type: TASK_ERROR, payload: err.responce.msg});
+        }
     };
 
     // DELETE_TASK
-    const deleteTask = (name) => {
-        setLoading();
-        dispatch({ type: DELETE_TASK, payload: name });
+    const deleteTask = async (id) => {
+        try {
+            await axios.delete(`/api/userData/${id}`);
+
+            dispatch({ type: DELETE_TASK, payload: id});
+
+        } catch (err) {
+            dispatch({ type: TASK_ERROR, payload: err.responce.msg});
+        }
+
+        // setLoading();
+        
     };
 
     // SET_CURRENT_TASK
@@ -115,14 +185,8 @@ const UserDataState = props => {
 
     // CLEAR_CURRENT_TASK
     const clearCurrentTask = () => {
-        setLoading();
+        // setLoading();
         dispatch({ type: CLEAR_CURRENT_TASK });
-    };
-
-    // UPDATE_TASK
-    const updateTask = (task) => {
-        setLoading();
-        dispatch({ type: UPDATE_TASK, payload: task });
     };
 
     // FILTER_TASK
@@ -154,32 +218,41 @@ const UserDataState = props => {
     };
 
     // SET_BACKLOGGED_TO_STARTED
-    const setToStarted = (name) => {
-        setLoading();
-        dispatch({ type: SET_BACKLOGGED_TO_STARTED, payload: name });
+    // const setToStarted = (id) => {
+    //     setLoading();
+    //     dispatch({ type: SET_BACKLOGGED_TO_STARTED, payload: id });
+    //     // setLoadingFalse();
+    // };
+
+    // CLEAR_TASKS
+    const clearTasks = () => {
+        dispatch({ type: CLEAR_TASKS });
     };
 
     return(
         <userDataContext.Provider
         value={{
             userData: state.userData,
-            setLoading: state.setLoading,
+            loading: state.loading,
             currentTask: state.currentTask,
             filtered: state.filtered,
             clickCurrentFilter: state.clickCurrentFilter,
             filtered: state.filtered,
             curtentStateCat: state.curtentStateCat,
+            error: state.error,
+            getTasks,
             setCurrentFilterSelect,
             deleteFinalRow,
             deleteTask,
-            setToStarted,
+            // setToStarted,
             addTask,
             updateTask,
             filterTasks,
             clearFilter,
             setCurrentTask,
             clearCurrentTask,
-            setLoading
+            setLoading,
+            clearTasks 
         }}>
             { props.children }
         </userDataContext.Provider>

@@ -1,10 +1,11 @@
 
 import React, { useState, useContext } from 'react';
 import UserDataContext from '../../context/UserData/UserDataContext';
+import UpdateTaskModalNewTaskSubItem from './UpdateTaskModalNewTaskSubItem';
 
 const NewTaskBacklogModal = () => {
     const userDataContext = useContext(UserDataContext);
-    const { addTask} = userDataContext;
+    const { addTask } = userDataContext;
 
     const [newTask, setNewTask] = useState({
         category: 'backlog',
@@ -30,7 +31,7 @@ const NewTaskBacklogModal = () => {
     };
 
     const onSubmit = () => {
-        if(newTask.name !== '' && newTask.description !== '') {
+        if(newTask.name !== '' && newTask.description !== '' && newTask.subTasks !== '') {
             addTask(newTask);
         } else {
         // console.log('please add name');
@@ -60,6 +61,22 @@ const NewTaskBacklogModal = () => {
             date: ''
         });
     };
+
+    const newSubTask = () => {
+        setNewTask({...newTask, subTasks: [...newTask.subTasks, ['', 0]]});
+        loopThroughSubTasks();
+    };
+
+    const loopThroughSubTasks = () => {
+        let subContent = [];
+        const ittr = [...newTask.subTasks];
+        ittr.forEach((sub, index) => {
+            subContent.push(<UpdateTaskModalNewTaskSubItem key={index} sub={sub} index={index} setNewTask={setNewTask} newTask={newTask}/>)
+        });
+        return(subContent);
+    };
+
+
     
     return (
         <div id='new-task-modal' className='modal' style={{width: '40%', height: '40%'}}>
@@ -77,6 +94,19 @@ const NewTaskBacklogModal = () => {
                             <label htmlFor='description' className='active'>Description</label>
                     </div>
                 </div>
+
+                <div className='row'>
+                    {newTask.subTasks === '' ?
+                        <div className='input-feild'>
+                            <input type="text" name="subtasks" value={newTask.subTasks} onChange={e => setNewTask({...newTask, subTasks: [[e.target.value, 0]] })} />
+                            <label htmlFor='subtasks' className='active'>SubDescription</label>
+                        </div>
+                    : 
+                        loopThroughSubTasks()
+                    }
+                    <button><i className='material-icons' onClick={newSubTask}>add</i></button> 
+                </div>
+
                 <div className='row'>
                     <div className='input-feild'>
                             <select name='priority'  className='browser-default' value={newTask.priority} onChange={e => setNewTask({...newTask, priority: e.target.value})}>

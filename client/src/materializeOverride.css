@@ -4,9 +4,14 @@
     max-width: 1280px;
     width: 55%;
   }
+
 .alert {
   text-align: center;
   color: black;
+}
+
+.btn-floating {
+  overflow: visible;
 }
 
 .alert-danger {

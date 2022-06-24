@@ -1,5 +1,6 @@
 // For QuizWipContext
 export const SET_LOADING = "SET_LOADING";
+export const SET_LOADING_FALSE = "SET_LOADING_FALSE";
 export const ADD_TASK = "ADD_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const SET_CURRENT_TASK = "SET_CURRENT_TASK";
@@ -14,6 +15,10 @@ export const CLEAR_CURRENT_FILTER_SELECT = "CLEAR_CURRENT_FILTER_SELECT";
 export const SET_CURRENT_STATE_CAT = "SET_CURRENT_STATE_CAT";
 
 export const DELETE_FINAL_ROW = "DELETE_FINAL_ROW";
+
+export const TASK_ERROR = "TASK_ERROR";
+export const GET_TASKS = "GET_TASKS";
+export const CLEAR_TASKS = "CLEAR_TASKS";
 
 // For Auth
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
