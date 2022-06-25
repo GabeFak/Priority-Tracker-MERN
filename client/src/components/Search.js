@@ -16,8 +16,8 @@ const Search = ({ cat }) => {
 
     const searchFilter = (e) => {
         if(text.current.value !== '') {
-            if(!text.current.value.includes('\\')){
-                console.log(text.current.value.indexOf('\\'))
+            if(!text.current.value.includes('\\')) {
+                console.log(text.current.value.indexOf('\\'));
                 filterTasks(e.target.value);
             }
         }else{
@@ -33,7 +33,7 @@ const Search = ({ cat }) => {
     };
 
     const changeSelectState = () => {
-        setCurrentFilterSelect(cat)
+        setCurrentFilterSelect(cat);
     };
 
     return (

@@ -11,7 +11,6 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
-import Alerts from './components/Alerts';
 
 //modals
 // import UpdateTaskModal from './components/modals/UpdateTaskModal';

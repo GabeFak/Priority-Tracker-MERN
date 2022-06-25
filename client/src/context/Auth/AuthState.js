@@ -64,7 +64,7 @@ const AuthState = props => {
 
             setTimeout(() => {
                 loadUser();
-            }, 500)
+            }, 500);
             
         } catch (error) {
             dispatch({
@@ -91,7 +91,7 @@ const AuthState = props => {
             
             setTimeout(() => {
                 loadUser();
-            }, 500)
+            }, 500);
             
         } catch (error) {
             dispatch({

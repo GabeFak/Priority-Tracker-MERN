@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react';
 import userDataContext from './UserDataContext';
 import userDataReducer from './UserDataReducer';
-import {v4 as uuid} from 'uuid';
 import axios from 'axios';
 
 import {
@@ -14,7 +13,6 @@ import {
     FILTER_TASK,
     CLEAR_FILTER_TASK,
     DELETE_FINAL_ROW,
-    SET_BACKLOGGED_TO_STARTED,
     SET_CURRENT_FILTER_SELECT,
     CLEAR_CURRENT_FILTER_SELECT,
     SET_CURRENT_STATE_CAT,
@@ -92,6 +90,7 @@ const UserDataState = props => {
     currentTask: null,
     filtered: null
     };
+
     const [state, dispatch] = useReducer(userDataReducer, initialState);
 
     // SET_LOADING_FALSE
@@ -104,21 +103,10 @@ const UserDataState = props => {
             const res = await axios.get('/api/userData');
 
             dispatch({ type: GET_TASKS, payload: res.data });
-            // setTimeout(() => {
-                setLoadingFalse();
-            // }, 750)
-
+            setLoadingFalse();
         } catch (err) {
             dispatch({ type: TASK_ERROR, payload: err.responce.msg});
-        }
-        // task.id = uuid();
-        
-        
-    };
-
-    // DELETE_FINAL_ROW
-    const deleteFinalRow = () => {
-        dispatch({ type: DELETE_FINAL_ROW });
+        };
     };
 
     // SET_LOADING
@@ -138,10 +126,7 @@ const UserDataState = props => {
             dispatch({ type: ADD_TASK, payload: res.data });
         } catch (err) {
             dispatch({ type: TASK_ERROR, payload: err.responce.msg});
-        }
-        // task.id = uuid();
-        // setLoading();
-        
+        }; 
     };
 
     // UPDATE_TASK
@@ -158,7 +143,7 @@ const UserDataState = props => {
             dispatch({ type: UPDATE_TASK, payload: res.data });
         } catch (err) {
             dispatch({ type: TASK_ERROR, payload: err.responce.msg});
-        }
+        };
     };
 
     // DELETE_TASK
@@ -166,14 +151,16 @@ const UserDataState = props => {
         try {
             await axios.delete(`/api/userData/${id}`);
 
-            dispatch({ type: DELETE_TASK, payload: id});
+            dispatch({ type: DELETE_TASK, payload: id });
 
         } catch (err) {
-            dispatch({ type: TASK_ERROR, payload: err.responce.msg});
-        }
+            dispatch({ type: TASK_ERROR, payload: err.responce.msg });
+        }; 
+    };
 
-        // setLoading();
-        
+    // DELETE_FINAL_ROW
+    const deleteFinalRow = () => {
+        dispatch({ type: DELETE_FINAL_ROW });
     };
 
     // SET_CURRENT_TASK
@@ -217,13 +204,6 @@ const UserDataState = props => {
         dispatch({ type: CLEAR_CURRENT_FILTER_SELECT });
     };
 
-    // SET_BACKLOGGED_TO_STARTED
-    // const setToStarted = (id) => {
-    //     setLoading();
-    //     dispatch({ type: SET_BACKLOGGED_TO_STARTED, payload: id });
-    //     // setLoadingFalse();
-    // };
-
     // CLEAR_TASKS
     const clearTasks = () => {
         dispatch({ type: CLEAR_TASKS });
@@ -244,7 +224,6 @@ const UserDataState = props => {
             setCurrentFilterSelect,
             deleteFinalRow,
             deleteTask,
-            // setToStarted,
             addTask,
             updateTask,
             filterTasks,

@@ -3,7 +3,6 @@ import React, { useState, useContext } from 'react';
 import UserDataContext from '../../context/UserData/UserDataContext';
 import UpdateTaskModalNewTaskSubItem from './UpdateTaskModalNewTaskSubItem';
 import AlertContext from '../../context/Alert/AlertContext';
-// import Alerts from '../Alerts';
 
 const NewTaskBacklogModal = () => {
     const userDataContext = useContext(UserDataContext);
@@ -40,8 +39,6 @@ const NewTaskBacklogModal = () => {
             addTask(newTask);
         } else {
             setAlert('Please fill out all feilds', 'danger', 1);
-        // console.log('please add name');
-        // Alert State Here
         };
         setNewTask({
             category: 'backlog',

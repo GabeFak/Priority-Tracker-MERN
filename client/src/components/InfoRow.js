@@ -19,7 +19,7 @@ const InfoRow = ({ cat }) => {
             <Search cat={cat}/>
             
             <div style={{ marginBottom: "55px" }}></div>
-            
+
                 {alertContext !== undefined && 
                     <>
                         {alerts[0] !== undefined && 
@@ -33,7 +33,6 @@ const InfoRow = ({ cat }) => {
 
             {filtered !== null && clickCurrentFilter !== null && curtentStateCat === cat ?
                 <>
-                    {/* filtered !== null && */}
                     {filtered.map((data, index) => {
                             return <InfoRowTask key={index} taskInfo={data} cat={cat}/>          
                         })
@@ -41,7 +40,6 @@ const InfoRow = ({ cat }) => {
                 </>
             :
                 <>
-                    {/* userData !== null && */}
                     {userData.map((data, index) => {
                         if(data.category === cat) {
                             return <InfoRowTask key={index} taskInfo={data} cat={cat}/>

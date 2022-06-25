@@ -29,8 +29,7 @@ const UpdateTaskModal = () => {
             updateTask(taskUpdate);
         } else {
             updateTask(taskUpdate);
-        }
-        
+        };
     };
 
     useEffect(() => {
@@ -53,7 +52,7 @@ const UpdateTaskModal = () => {
                 console.log(0)
             } else {
                 subContent.push(<UpdateTaskModelSubItem key={index} sub={sub} index={index} setTaskUpdate={setTaskUpdate} taskUpdate={taskUpdate} display='block'/>);
-            }
+            };
             
         });
         return(subContent);
@@ -76,16 +75,7 @@ const UpdateTaskModal = () => {
                     </div>
                 </div>
                 <div className='row'>
-                    {/* {taskUpdate.subTasks === [''] ? 
-                        <div className='input-feild'>
-                            {console.log('hi')}
-                            <input type="text" name="subtasks"  />
-                            <input type="checkbox" className="filled-in" />
-                            <label htmlFor='subtasks' className='active'>SubDescription</label>
-                        </div>
-                    :  */}
                     {loopThroughSubTasks()}
-                    {/* } */}
                     <button><i className='material-icons' onClick={newSubTask}>add</i></button> 
                 </div>
                 <div className='row'>

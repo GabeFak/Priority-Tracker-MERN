@@ -1,4 +1,4 @@
-// For QuizWipContext
+// For UserDataState
 export const SET_LOADING = "SET_LOADING";
 export const SET_LOADING_FALSE = "SET_LOADING_FALSE";
 export const ADD_TASK = "ADD_TASK";
@@ -20,7 +20,7 @@ export const TASK_ERROR = "TASK_ERROR";
 export const GET_TASKS = "GET_TASKS";
 export const CLEAR_TASKS = "CLEAR_TASKS";
 
-// For Auth
+// For AuthState
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const USER_LOADED = "USER_LOADED";
@@ -30,6 +30,6 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-// For alerts
+// For AlertState
 export const SET_ALERT = "SET_ALERT";
 export const REMOVE_ALERT = "REMOVE_ALERT";

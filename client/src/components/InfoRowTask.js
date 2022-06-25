@@ -28,11 +28,9 @@ const InfoRowTask = ({ taskInfo, cat }) => {
             updateTask(updateCagatoryAndIsFinished);
         };
     }, [updateCagatoryAndIsFinished]);
-    // updateCagatoryAndIsFinished
 
     const setTaskToStarted = () => {
         setUpdateCagatoryAndIsFinished({...updateCagatoryAndIsFinished, category: 'started'});
-        // setToStarted(_id);
     };
 
     const onDelete = () => {
@@ -71,19 +69,16 @@ const InfoRowTask = ({ taskInfo, cat }) => {
                             ""
                         :
                             <>
-                                {/* taskInfo === undefined ? '' :  */}
                                 {listFinished()}
                             </>
                         }
                     </div> 
                 </div>
                 <div className="collapsible-body">
-                    {/* taskInfo === undefined ? '' :  */}
                     <span>{description}</span>
                     <div style={{ display: "flex", flexDirection: "row"}}>
                         {category !== "backlog" ? 
                             <>
-                                {/* taskInfo === undefined ? '' :  */}
                                 <div>{listFinished()}</div>
                                 <div>{priority}</div>
                                 <div>{date}</div>

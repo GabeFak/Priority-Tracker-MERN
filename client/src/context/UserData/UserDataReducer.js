@@ -7,7 +7,6 @@ import {
     UPDATE_TASK,
     FILTER_TASK,
     CLEAR_FILTER_TASK,
-    SET_BACKLOGGED_TO_STARTED,
     DELETE_FINAL_ROW,
     SET_CURRENT_FILTER_SELECT,
     CLEAR_CURRENT_FILTER_SELECT,
@@ -21,17 +20,17 @@ import {
 const Reducer = (state, action) => {
     switch(action.type) {
         case GET_TASKS:
-            // console.log(action.payload)
             return {
                 ...state,
                 userData: action.payload
             };
+
         case SET_LOADING_FALSE:
-            // console.log(state.userData)
             return {
                 ...state,
                 loading: false
             };
+
         case DELETE_FINAL_ROW:
             let deleteFinished = state.userData;
             let rowDeleted = deleteFinished.filter(cat => cat.category !== 'finished');
@@ -120,6 +119,7 @@ const Reducer = (state, action) => {
                 curtentStateCat: null,
                 loading: false
             };   
+
         case CLEAR_TASKS:
             return {
                 ...state,
@@ -132,13 +132,10 @@ const Reducer = (state, action) => {
                 error: null,
                 loading: false
             };
+
         case UPDATE_TASK:
-            // let selectTask = state.userData;
-            // let tasksMinusUpdate = selectTask.filter(task => task._id !== action.payload._id);
-            // tasksMinusUpdate.unshift(action.payload);
             return {
                 ...state,
-                // userData: tasksMinusUpdate,
                 userData: state.userData.map(task => {
                     if(task._id !== action.payload._id) {
                         return task
@@ -147,40 +144,13 @@ const Reducer = (state, action) => {
                     }}),
                 loading: false
             };
+
         case TASK_ERROR: 
             return {
                 ...state,
                 error: action.payload
             };
 
-        // case SET_BACKLOGGED_TO_STARTED:
-            // let selectBackLoggedToStarted = [...state.userData];
-            // let setTostartedCat = selectBackLoggedToStarted.filter(task => task._id === action.payload);
-            // let restOfState = selectBackLoggedToStarted.filter(task => task._id !== action.payload);
-            // setTostartedCat.catagory = 'started';
-            // console.log(selectBackLoggedToStarted)
-            // let newUserData = restOfState.unshift(setTostartedCat);
-            // let newUserData = selectBackLoggedToStarted.map(task => {
-            //     if(task._id === action.payload) {
-            //         task.category = "started";
-            //         return task;
-            //     } else {
-            //         return task;
-            //     }
-            // });
-            // console.log(newUserData)
-            // return {
-            //     ...state,
-            //     userData: state.userData.map(task => {
-            //                 if(task._id === action.payload) {
-            //                     task.category = "started";
-            //                     return task;
-            //                 } else {
-            //                     return task;
-            //                 }
-            //             }),
-            //     loading: false
-            // };
         default:
             return state;
     };
