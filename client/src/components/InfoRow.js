@@ -3,15 +3,34 @@ import { useContext } from 'react';
 import Search from './Search';
 import UserDataContext from '../context/UserData/UserDataContext';
 import InfoRowTask from './InfoRowTask';
+import Alerts from './Alerts';
+import AlertContext from '../context/Alert/AlertContext';
 
 const InfoRow = ({ cat }) => {
     const userDataContext = useContext(UserDataContext);
     const { userData, filtered, clickCurrentFilter, curtentStateCat } = userDataContext;
 
+    const alertContext = useContext(AlertContext);
+    const { alerts } = alertContext;
+ 
+
     return (
         <div className="col s3" style={{overflow: "scroll", height: "100vh", paddingBottom: "64px", paddingLeft: "unset", paddingRight: "unset", msOverflowStyle: "none", scrollbarWidth: "none"}}>
             <Search cat={cat}/>
+            
             <div style={{ marginBottom: "55px" }}></div>
+            
+                {alertContext !== undefined && 
+                    <>
+                        {alerts[0] !== undefined && 
+                            <>
+                                {cat === 'backlog' && alerts[0].alertClass === 1 && <Alerts />}
+                                {cat === 'started' && alerts[0].alertClass === 2 && <Alerts />}
+                            </>
+                        }
+                    </>
+                }
+
             {filtered !== null && clickCurrentFilter !== null && curtentStateCat === cat ?
                 <>
                     {/* filtered !== null && */}

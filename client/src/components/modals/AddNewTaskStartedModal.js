@@ -1,10 +1,14 @@
 import React, { useState, useContext } from 'react';
 import UserDataContext from '../../context/UserData/UserDataContext';
 import UpdateTaskModalNewTaskSubItem from './UpdateTaskModalNewTaskSubItem';
+import AlertContext from '../../context/Alert/AlertContext';
 
 const AddNewTaskStartedModal = () => {
     const userDataContext = useContext(UserDataContext);
     const { addTask } = userDataContext;
+
+    const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
 
     const newDatePlusAdd = (callback) => {
         let current = new Date();
@@ -33,8 +37,7 @@ const AddNewTaskStartedModal = () => {
         if(newTask.name !== '' && newTask.description !== '' && newTask.subTasks !== '') {
             addTask(newTask)
         } else {
-            // console.log('please add name and description');
-            // Alert State here
+            setAlert('Please fill out all feilds', 'danger', 2);
         };
         setNewTask({
             category: 'started',

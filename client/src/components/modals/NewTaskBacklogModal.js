@@ -2,10 +2,15 @@
 import React, { useState, useContext } from 'react';
 import UserDataContext from '../../context/UserData/UserDataContext';
 import UpdateTaskModalNewTaskSubItem from './UpdateTaskModalNewTaskSubItem';
+import AlertContext from '../../context/Alert/AlertContext';
+// import Alerts from '../Alerts';
 
 const NewTaskBacklogModal = () => {
     const userDataContext = useContext(UserDataContext);
     const { addTask } = userDataContext;
+
+    const alertContext = useContext(AlertContext);
+    const { setAlert } = alertContext;
 
     const [newTask, setNewTask] = useState({
         category: 'backlog',
@@ -34,6 +39,7 @@ const NewTaskBacklogModal = () => {
         if(newTask.name !== '' && newTask.description !== '' && newTask.subTasks !== '') {
             addTask(newTask);
         } else {
+            setAlert('Please fill out all feilds', 'danger', 1);
         // console.log('please add name');
         // Alert State Here
         };
@@ -82,6 +88,7 @@ const NewTaskBacklogModal = () => {
         <div id='new-task-modal' className='modal' style={{width: '40%', height: '40%'}}>
             <div className='modal-content'>
                 <h4>Create New Backlog Task</h4>
+                {/* <Alerts /> */}
                 <div className='row'>
                     <div className='input-feild'>
                         <input onClick={addDate} type="text" name="name" value={newTask.name} onChange={e => setNewTask({...newTask, name: e.target.value})}/>
