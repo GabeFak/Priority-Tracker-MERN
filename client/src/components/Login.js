@@ -51,8 +51,9 @@ const Login = () => {
 
     return (
         <div className="row container" >
-            <div>Login</div>
-                <form onSubmit={onSubmit} className="col s12">
+            {/* <div>Login</div> */}
+                <form onSubmit={onSubmit} className="col s12" >
+                <div className='reg-log'>Login</div>
                     <Alerts />
                     <div className="row">
                         <div className="input-field col s12">

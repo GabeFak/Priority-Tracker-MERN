@@ -9,7 +9,7 @@ const UpdateTaskModelSubItem = ({ sub, setTaskUpdate, index, taskUpdate, display
                       <p>
                           <label>
 
-                              <input style={{opacity: "1", pointerEvents: "all", display: {display} }}type="checkbox" className="filled-in" checked={sub[1]} value={sub[1]} 
+                              <input style={{opacity: "1", pointerEvents: "all", display: {display}, marginTop: "2px" }}type="checkbox" className="filled-in" checked={sub[1]} value={sub[1]} 
                               
                               onChange={e => { const tempSubTaskIO = [...taskUpdate.subTasks]; tempSubTaskIO[index][1]=!tempSubTaskIO[index][1];
                                 

@@ -54,8 +54,9 @@ const Register = () => {
 
     return (
         <div className="row container" >
-            <div>Register</div>
+            
             <form onSubmit={onSubmit} className="col s12">
+                <div className='reg-log'>Register</div>
                 <Alerts />
                 <div className="row">
                     <div className="input-field col s12">

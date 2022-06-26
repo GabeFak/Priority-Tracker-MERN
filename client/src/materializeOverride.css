@@ -30,6 +30,24 @@
   margin-right: 40px;
 }
 
+.input-field input[type="search"] ~ .mdi-navigation-close, .input-field input[type="search"] ~ .material-icons {
+  position: absolute;
+  top: 0;
+  right: .1rem;
+  color: transparent;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: .3s color;
+}
+
+.nav-wrapper .input-field input[type="search"] {
+  height: inherit;
+  padding-left: 4rem;
+  width: calc(100% - 1em);
+  border: 0;
+  box-shadow: none;
+}
+
   @media only screen and (min-width: 601px) {
     .container {
       width: 45%;

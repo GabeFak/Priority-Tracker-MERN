@@ -33,24 +33,6 @@ const AddNewTaskStartedModal = () => {
         newDatePlusAdd(setNewTask); 
     };
 
-    const onSubmit = () => {
-        if(newTask.name !== '' && newTask.description !== '' && newTask.subTasks !== '') {
-            addTask(newTask)
-        } else {
-            setAlert('Please fill out all feilds', 'danger', 2);
-        };
-        setNewTask({
-            category: 'started',
-            name: '',
-            description: '',
-            subTasks: '',
-            tags: [{tag: 'Tags'}],
-            priority: 'low',
-            isFinished: false,
-            date: ''
-        });
-    };
-        
     const onClear = () => {
         setNewTask({
             category: 'started',
@@ -62,6 +44,15 @@ const AddNewTaskStartedModal = () => {
             isFinished: false,
             date: ''
         });
+    };
+
+    const onSubmit = () => {
+        if(newTask.name !== '' && newTask.description !== '' && newTask.subTasks !== '') {
+            addTask(newTask)
+        } else {
+            setAlert('Please fill out all feilds', 'danger', 2);
+        };
+        onClear();
     };
 
     const newSubTask = () => {
@@ -79,7 +70,7 @@ const AddNewTaskStartedModal = () => {
     };
     
     return (
-        <div id='new-task-modal-started' className='modal' style={{width: '60%', height: '60%'}}>
+        <div id='new-task-modal-started' className='modal' style={{width: '65%', height: '65%'}}>
             <div className='modal-content'>
                 <h4>Create New Backlog Task</h4>
                 <div className='row'>
@@ -123,12 +114,12 @@ const AddNewTaskStartedModal = () => {
                         </select>
                     </div>
                 </div>
-            </div>
-            <div className='modal-footer'>
-                {/* cancel */}
-                <a href="#!" onClick={onClear} className="modal-close waves-effect waves-light btn green">Cancel</a>
-                {/* submit */}
-                <a href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
+                <div className='modal-footer'>
+                    {/* cancel */}
+                    <a href="#!" onClick={onClear} className="modal-close waves-effect waves-light btn green">Cancel</a>
+                    {/* submit */}
+                    <a href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
+                </div>
             </div>
         </div>
     )

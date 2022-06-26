@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext, useRef, useEffect } from 'react';
 import UserDataContext from '../context/UserData/UserDataContext';
+import '../materializeOverride.css';
 
 const Search = ({ cat }) => {
     const userDataContext = useContext(UserDataContext);
@@ -60,7 +61,7 @@ const Search = ({ cat }) => {
             <div className="nav-wrapper" syle={{display: 'flex', alignItems: "center"}}>    
                 <form>
                     <div className="input-field" >
-                        <input id="search" ref={text} onFocus={changeSelectState} onChange={searchFilter} type="search" required style={{margin: "unset"}}/>
+                        <input id="search" ref={text} onFocus={changeSelectState} onChange={searchFilter} type="search" required style={{margin: "unset", maxWidth: '400px'}}/>
                         <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
                         <i className="material-icons" style={{display: "inline"}}>close</i>
                     </div>
