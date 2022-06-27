@@ -6,8 +6,12 @@
   }
 
 .alert {
+  font-size: 1.4em;
   text-align: center;
-  color: black;
+  color: darkslategray;
+  border-radius: 2px;
+  border: 2px solid rgba(250, 70, 101, 0.7);
+  padding-bottom: 4px;
 }
 
 .btn-floating {
@@ -15,7 +19,7 @@
 }
 
 .alert-danger {
-  background-color: red;
+  background-color: rgba(250, 70, 101, 0.5);
 }
 
 .wide {
@@ -84,9 +88,61 @@
   font-size: 1.4em;
 }
 
+@media screen and (max-width: 775px) {
+  .media-hide {
+    display: none;
+  }
+  .media-space-top {
+    margin-top: 20px;
+  }
+  .box-spacer {
+    justify-content: center;
+    align-items: center;
+  }
+  .brand-logo{
+    margin-left: 20px;
+  }
+}
+
+.transform {
+  display: block;
+}
+
+/* for large monitor scaling */
+/* @media screen and (max-width: 4100px) {
+  .task-name {
+    font-size: 2.2em;
+  }
+  .calc-finished{
+    font-size: 1.9em;
+  }
+  .material-icons {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 1800px) {
+  .task-name {
+    font-size: 1.4em;
+  }
+  .calc-finished{
+    font-size: 15px;
+  }
+  .material-icons {
+    font-size: 2rem;
+  }
+} */
+
 @media screen and (max-width: 1080px) {
   .task-name {
     font-size: 1.2em;
+  }
+  .calc-finished{
+    font-size: 1.2em;
+  }
+
+  .material-icons {
+    font-size: 1.6rem;
   }
 }
 
@@ -94,10 +150,38 @@
   .task-name {
     font-size: 1em;
   }
+  .calc-finished{
+    font-size: 1em;
+  }
+  .collapsible-header i{
+    font-size: 1.2rem;
+  }
+  .material-icons {
+    font-size: 16px;
+  }
+
+  input[type ="search"]{
+    padding: unset;
+  }
+
+  .search-icon{
+    display: none;
+  }
+  
+element {
+  margin: unset;
+}
+.nav-wrapper .input-field input[type="search"] {
+  padding-left: 5px;
+}
+
 }
 
 @media screen and (max-width: 550px) {
   .task-name {
+    font-size: 0.8em;
+  }
+  .calc-finished{
     font-size: 0.8em;
   }
 }
@@ -153,16 +237,18 @@
 }
 
 
-  @media only screen and (min-width: 601px) {
+  @media only screen and (min-width: 600px) {
     .container {
       width: 45%;
     }
   }
+
   @media only screen and (min-width: 993px) {
     .container {
       width: 30%;
     }
   }
+
   /* OverWrites Right links display being set to none */
   @media only screen and (max-width: 992px){
     .hide-on-med-and-down{
@@ -193,5 +279,11 @@
     nav .brand-logo.right{
       right:0rem;
       left:auto;
+    }
+  }
+
+  @media only screen and (max-width: 600px){
+    nav {
+      height: 64px;
     }
   }

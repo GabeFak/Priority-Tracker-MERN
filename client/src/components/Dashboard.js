@@ -34,7 +34,7 @@ const Dashboard = () => {
     };
 
         return (
-            <div className="row">
+            <div className="row transform">
                 {loading ? '' : createCols()}
 
             </div>

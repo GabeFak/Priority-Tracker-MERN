@@ -108,12 +108,12 @@ const NewTaskBacklogModal = () => {
                     : 
                         loopThroughSubTasks()
                     }
-                    <button><i className='material-icons' onClick={newSubTask}>add</i></button> 
+                    <button style={{marginTop: '8px'}}><i className='material-icons' style={{color: "darkslategray"}} onClick={newSubTask}>add</i></button> 
                 </div>
 
                 <div className='row'>
                     <div className='input-feild'>
-                            <select name='priority'  className='browser-default' value={newTask.priority} onChange={e => setNewTask({...newTask, priority: e.target.value})}>
+                            <select style={{color: "darkslategray"}} name='priority'  className='browser-default' value={newTask.priority} onChange={e => setNewTask({...newTask, priority: e.target.value})}>
                                 <option value='' disabled>
                                     Select Priority
                                 </option>
@@ -130,11 +130,11 @@ const NewTaskBacklogModal = () => {
                     </div>
                 </div>
             </div>
-            <div className='modal-footer'>
+            <div className='modal-footer' style={{paddingRight: '24px'}}>
                 {/* cancel */}
-                <a href="#!" onClick={onClear} className="modal-close waves-effect waves-light btn green">Cancel</a>
+                <a style={{marginLeft: '40px'}} href="#!" onClick={onClear} className="modal-close waves-effect waves-light btn green">Cancel</a>
                 {/* submit */}
-                <a href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
+                <a style={{marginLeft: '40px'}} href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
             </div>
         </div>
     )

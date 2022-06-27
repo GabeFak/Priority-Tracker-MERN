@@ -103,7 +103,7 @@ const UpdateTaskModal = () => {
                     </div>
                     : loopThroughSubTasks()}
                     {/* {subTaskItem.subTasks} */}
-                    <button><i className='material-icons' onClick={newSubTask}>add</i></button> 
+                    <button ><i className='material-icons' onClick={newSubTask}>add</i></button> 
                     {/* onClick={newSubTask} */}
                 </div>
                 <div className='row'>

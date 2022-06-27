@@ -49,7 +49,6 @@ const UpdateTaskModal = () => {
         ittr.forEach((sub, index) => {
             if(index === 0) {
                 subContent.push(<UpdateTaskModelSubItem key={index} sub={sub} index={index} setTaskUpdate={setTaskUpdate} taskUpdate={taskUpdate} display='none'/>);
-                console.log(0)
             } else {
                 subContent.push(<UpdateTaskModelSubItem key={index} sub={sub} index={index} setTaskUpdate={setTaskUpdate} taskUpdate={taskUpdate} display='block'/>);
             };
@@ -59,31 +58,31 @@ const UpdateTaskModal = () => {
     };
 
     return (
-        <div id='edit-task-modal-2' className='modal' style={{width: '60%', height: '60%'}}>
+        <div id='edit-task-modal-2' className='modal edit-modal' style={{width: '60%', height: '60%'}}>
             <div className='modal-content'>
                 <h4>Edit Task</h4>
                 <div className='row'>
                     <div className='input-feild'>
-                        <input type="text" name="name" value={taskUpdate.name} onChange={e => setTaskUpdate({...taskUpdate, name: e.target.value})}/>
+                        <input className="modal-input-feild" type="text" name="name" value={taskUpdate.name} onChange={e => setTaskUpdate({...taskUpdate, name: e.target.value})}/>
                         <label htmlFor='name' className='active'>Name</label>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='input-feild'>
-                            <input type="text" name="description" value={taskUpdate.description} onChange={e => setTaskUpdate({...taskUpdate, description: e.target.value})}/>
+                            <input  className="modal-input-feild" type="text" name="description" value={taskUpdate.description} onChange={e => setTaskUpdate({...taskUpdate, description: e.target.value})}/>
                             <label htmlFor='description' className='active'>Description</label>
                     </div>
                 </div>
                 <div className='row'>
                     {loopThroughSubTasks()}
-                    <button><i className='material-icons' onClick={newSubTask}>add</i></button> 
+                    <button style={{marginTop: '8px'}}><i className='material-icons' style={{color: "darkslategray"}} onClick={newSubTask}>add</i></button> 
                 </div>
                 <div className='row'>
                     <Chips setTask={ setTaskUpdate } task={ taskUpdate } />
                 </div>
                 <div className='row'>
                     <div className='input-feild'>
-                        <select name='priority'  className='browser-default' value={taskUpdate.priority} onChange={e => setTaskUpdate({...taskUpdate, priority: e.target.value})}>
+                        <select style={{color: "darkslategray"}} name='priority'  className='browser-default' value={taskUpdate.priority} onChange={e => setTaskUpdate({...taskUpdate, priority: e.target.value})}>
                             <option value='' disabled>
                                 Select Priority
                             </option>
@@ -101,7 +100,7 @@ const UpdateTaskModal = () => {
                 </div>
                 <div className='row'>
                     <div className='input-feild'>
-                        <select name='priority'  className='browser-default' value={taskUpdate.category} onChange={e => setTaskUpdate({...taskUpdate, category: e.target.value})}>
+                        <select style={{color: "darkslategray"}} name='priority'  className='browser-default' value={taskUpdate.category} onChange={e => setTaskUpdate({...taskUpdate, category: e.target.value})}>
                             <option value='' disabled>
                                 Select Category
                             </option>
@@ -120,13 +119,15 @@ const UpdateTaskModal = () => {
             </div>
             <div className='modal-footer'>
                 {/* Date Created Display */}
-                <div>{`Date created: ${taskUpdate.date}`}</div>
-                {/* cancel */}
-                <a href="#!" className="modal-close waves-effect waves-light btn green">Cancel</a>
-                {/* delete */}
-                <a className='modal-close btn-floating red' onClick={onDelete}><i className='material-icons'>delete</i></a>
-                {/* submit */}
-                <a href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
+                <div style={{marginRight: '24px', marginBottom: '20px'}}><b>Date created:</b> {taskUpdate.date}</div>
+                <div className='modal-btn-flow'>
+                    {/* delete */}
+                    <a style={{marginLeft: '40px'}} className='modal-close btn-floating red' onClick={onDelete}><i className='material-icons'>delete</i></a>
+                    {/* cancel */}
+                    <a style={{marginLeft: '40px'}} href="#!" className="modal-close waves-effect waves-light btn green">Cancel</a>
+                    {/* submit */}
+                    <a style={{marginLeft: '40px'}} href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
+                </div>
             </div>
         </div>
     )

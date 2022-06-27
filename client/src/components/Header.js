@@ -23,7 +23,6 @@ const Header = () => {
             <li>
                 <a onClick={onLogout} href='#!'>
                     <i className='material-icons'>arrow_forward</i>
-                    <span className="hide">Logout</span>
                 </a>
             </li>
         </Fragment>

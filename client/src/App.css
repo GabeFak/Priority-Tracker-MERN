@@ -15,3 +15,24 @@ body {
 nav {
   background-color: #fa738a;
 }
+
+.edit-modal{
+  color: darkslategray;
+}
+
+.modal-input-feild {
+  color: darkslategray;
+}
+
+.modal-btn-flow {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 28px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.btn-space{
+  margin-left: 40px;
+}

@@ -97,17 +97,17 @@ const InfoRowTask = ({ taskInfo, cat }) => {
     return (
         <ul className={`collapsible ${setColor()}`}>
             <li>
-                <div className={`collapsible-header  box-spacer-3 ${setColor()}`} >
+                <div className={`collapsible-header box-spacer-3 ${setColor()}`} >
                   
-                    {cat === 'backlog' && <i style={{display: "inline"}} className="material-icons">stars</i> }
-                    {cat === 'started' && <i style={{display: "inline"}} className="material-icons">star_border</i> }
-                    {cat === 'inProgress' && <i style={{display: "inline"}} className="material-icons">star_half</i> }
-                    {cat === 'finished' && <i style={{display: "inline"}} className="material-icons">star</i> }
+                    {cat === 'backlog' && <i style={{display: "inline"}} className="material-icons info-row-icons">stars</i> }
+                    {cat === 'started' && <i style={{display: "inline"}} className="material-icons info-row-icons">star_border</i> }
+                    {cat === 'inProgress' && <i style={{display: "inline"}} className="material-icons info-row-icons">star_half</i> }
+                    {cat === 'finished' && <i style={{display: "inline"}} className="material-icons info-row-icons">star</i> }
                     
                         {/* taskInfo === undefined ? '' :  */}
                         <div className='task-name'>{name}</div>
                     
-                    <div>
+                    <div className='calc-finished'>
                         {category === "backlog" ? 
                             ""
                         :
@@ -123,10 +123,10 @@ const InfoRowTask = ({ taskInfo, cat }) => {
                         {category !== "backlog" ? 
                             <>
                                 <div className='box-spacer'>
-                                    <div>{listFinished()}</div>
-                                    <div>{setPriority()}</div>
-                                    <div>{displayDate()}</div>
-                                    <a href="#edit-task-modal-2" className='btn-floating modal-trigger green' value="modal" onClick={onClick}><i className='material-icons'>edit</i></a>
+                                    <div className='media-hide'>{listFinished()}</div>
+                                    <div className='media-hide'>{setPriority()}</div>
+                                    <div className='media-hide'>{displayDate()}</div>
+                                    <a href="#edit-task-modal-2" className='btn-floating modal-trigger green media-space-top' value="modal" onClick={onClick}><i className='material-icons'>edit</i></a>
                                 </div>
                             </>
                         : 
