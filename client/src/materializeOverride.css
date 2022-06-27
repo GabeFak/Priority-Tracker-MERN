@@ -30,10 +30,10 @@
   margin-right: 40px;
 }
 
-.input-field input[type="search"] ~ .mdi-navigation-close, .input-field input[type="search"] ~ .material-icons {
+.input-field input[type="search"]:focus ~ .mdi-navigation-close, .input-field input[type="search"] ~ .material-icons {
   position: absolute;
   top: 0;
-  right: .1rem;
+  /* right: .1rem; */
   color: transparent;
   cursor: pointer;
   font-size: 2rem;
@@ -47,6 +47,111 @@
   border: 0;
   box-shadow: none;
 }
+
+.btn-floating {
+  margin-left: 10px;
+}
+
+.box-spacer {
+  font-style: italic;
+  font-weight: bold;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.box-spacer-2 {
+  justify-content: flex-end;    
+}
+
+.box-spacer-3 {
+  justify-content: space-between;    
+}
+
+.box-spacer-3, .box-spacer, span {
+  color: darkslategray;
+}
+
+.box-spacer,.box-spacer-2,.box-spacer-3 {
+  display: flex;
+  flex-direction: row;
+}
+
+.box-spacer-2 > a {
+  margin-left: 15px;
+}
+
+.task-name {
+  font-size: 1.4em;
+}
+
+@media screen and (max-width: 1080px) {
+  .task-name {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .task-name {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .task-name {
+    font-size: 0.8em;
+  }
+}
+
+.colour-1{
+  background-color: rgba(250, 70, 101, 0.5);
+}
+.colour-2{
+  background-color: rgba(250, 144, 70, 0.5);
+}
+.colour-3{
+  background-color: rgba(234, 250, 70, 0.5);
+}
+.colour-4{
+  background-color: rgba(99, 250, 70, 0.5);
+}
+
+.colour-1-prime{
+  background-color: #fca2b1;
+}
+.colour-2-prime{
+  background-color: #fcc7a2;
+}
+.colour-3-prime{
+  background-color: #f4fca2;
+}
+.colour-4-prime{
+  background-color: #b0fca2;
+}
+
+.input-field input[type ="search"]:focus:not(.browser-default) {
+  background-color: rgba(0,0,0,0);
+  color: darkslategray;
+}
+
+.input-field input[type ="search"]{
+  color: darkslategray;
+}
+
+.collapsible-header {
+  color: darkslategray;
+  border-bottom: none;
+}
+
+.collapsible-body {
+  border-bottom: none;
+}
+
+.collapsible {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
 
   @media only screen and (min-width: 601px) {
     .container {

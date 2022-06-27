@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useContext, useState } from 'react';
 import UserDataContext from '../context/UserData/UserDataContext';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import '../materializeOverride.css';
 
 const InfoRowTask = ({ taskInfo, cat }) => {
     const { category, name, description, subTasks, tags, priority, isFinished, date, _id } = taskInfo;
@@ -59,11 +60,53 @@ const InfoRowTask = ({ taskInfo, cat }) => {
     const onClick = () => {
         setCurrentTask(name);
     };
+
+    const displayDate = () => {
+        let dateParts = date.split('-');
+        return <div>{`${dateParts[1]}/${dateParts[2].slice(0, 2)}`}</div>
+    }
+
+    const setColor = () => {
+        switch (cat) {
+            case 'backlog':
+                return "colour-1"
+            case 'started':
+                return "colour-2"
+            case 'inProgress':
+                return "colour-3"
+            case 'finished':
+                return "colour-4"
+            default:
+                break;
+        };
+    };
+
+    const setPriority = () => {
+        switch (priority) {
+            case 'low':
+                return "Low"
+            case 'med':
+                return "Medium"
+            case 'high':
+                return "High"
+            default:
+                break;
+        };
+    }
     
     return (
-        <ul className="collapsible">
+        <ul className={`collapsible ${setColor()}`}>
             <li>
-                <div className="collapsible-header" ><i style={{display: "inline"}} className="material-icons">filter_drama</i> {taskInfo === undefined ? '' : name}
+                <div className={`collapsible-header  box-spacer-3 ${setColor()}`} >
+                  
+                    {cat === 'backlog' && <i style={{display: "inline"}} className="material-icons">stars</i> }
+                    {cat === 'started' && <i style={{display: "inline"}} className="material-icons">star_border</i> }
+                    {cat === 'inProgress' && <i style={{display: "inline"}} className="material-icons">star_half</i> }
+                    {cat === 'finished' && <i style={{display: "inline"}} className="material-icons">star</i> }
+                    
+                        {/* taskInfo === undefined ? '' :  */}
+                        <div className='task-name'>{name}</div>
+                    
                     <div>
                         {category === "backlog" ? 
                             ""
@@ -75,19 +118,23 @@ const InfoRowTask = ({ taskInfo, cat }) => {
                     </div> 
                 </div>
                 <div className="collapsible-body">
-                    <span>{description}</span>
-                    <div style={{ display: "flex", flexDirection: "row"}}>
+                    <span> <i>Description:</i> {description}</span>
+                    <div style={{ lineHeight: '3'}}>
                         {category !== "backlog" ? 
                             <>
-                                <div>{listFinished()}</div>
-                                <div>{priority}</div>
-                                <div>{date}</div>
-                                <a href="#edit-task-modal-2" className='btn-floating modal-trigger green' value="modal" onClick={onClick}><i className='material-icons'>edit</i></a>
+                                <div className='box-spacer'>
+                                    <div>{listFinished()}</div>
+                                    <div>{setPriority()}</div>
+                                    <div>{displayDate()}</div>
+                                    <a href="#edit-task-modal-2" className='btn-floating modal-trigger green' value="modal" onClick={onClick}><i className='material-icons'>edit</i></a>
+                                </div>
                             </>
                         : 
                             <>
-                                <a className='btn-floating red' onClick={onDelete} ><i className='material-icons'>delete</i></a>
-                                <a className='btn-floating orange' onClick={setTaskToStarted}><i className='material-icons'>arrow_forward</i></a>
+                                <div className='box-spacer-2' style={{marginTop: '10px'}}>
+                                    <a className='btn-floating red' onClick={onDelete} ><i className='material-icons'>delete</i></a>
+                                    <a className='btn-floating orange' onClick={setTaskToStarted}><i className='material-icons'>arrow_forward</i></a>
+                                </div>
                             </>
                         }
                     </div>

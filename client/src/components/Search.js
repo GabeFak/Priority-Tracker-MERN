@@ -37,9 +37,24 @@ const Search = ({ cat }) => {
         setCurrentFilterSelect(cat);
     };
 
+    const setColor = () => {
+        switch (cat) {
+            case 'backlog':
+                return "colour-1-prime"
+            case 'started':
+                return "colour-2-prime"
+            case 'inProgress':
+                return "colour-3-prime"
+            case 'finished':
+                return "colour-4-prime"
+            default:
+                break;
+        };
+    };
+
     return (
-        <div style={{position: "fixed", zIndex: "0", top: "64px", backgroundColor: "white", width: "inherit", marginBottom: "55px", display: 'flex', flexDirection: "row"}}>
-            <div style={{height: "58px",display: 'flex', alignItems: "center"}}>
+        <div className ={setColor()} style={{position: "fixed", zIndex: "0", top: "64px", width: "inherit", marginBottom: "55px", display: 'flex', flexDirection: "row"}}>
+            <div style={{height: "55px",display: 'flex', alignItems: "center"}}>
                 {cat !== "backlog" && cat !== "started" ? 
                     <>
                         {cat !== "finished" ?                  
@@ -61,9 +76,9 @@ const Search = ({ cat }) => {
             <div className="nav-wrapper" syle={{display: 'flex', alignItems: "center"}}>    
                 <form>
                     <div className="input-field" >
-                        <input id="search" ref={text} onFocus={changeSelectState} onChange={searchFilter} type="search" required style={{margin: "unset", maxWidth: '400px'}}/>
+                        <input id="search" ref={text} onFocus={changeSelectState} onChange={searchFilter} type="search" required style={{margin: "unset"}}/>
                         <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
-                        <i className="material-icons" style={{display: "inline"}}>close</i>
+                        {/* <i className="material-icons" style={{display: "inline"}}>close</i> */}
                     </div>
                 </form>
             </div>
