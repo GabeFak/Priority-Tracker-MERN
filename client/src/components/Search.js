@@ -5,7 +5,7 @@ import '../materializeOverride.css';
 
 const Search = ({ cat }) => {
     const userDataContext = useContext(UserDataContext);
-    const { deleteFinalRow, setCurrentFilterSelect, filterTasks, filtered, clearFilter } = userDataContext;
+    const { deleteFinalRow, setCurrentFilterSelect, filterTasks, filtered, clearFilter, userData, deleteTask} = userDataContext;
 
     const text = useRef('');
 
@@ -18,7 +18,7 @@ const Search = ({ cat }) => {
     const searchFilter = (e) => {
         if(text.current.value !== '') {
             if(!text.current.value.includes('\\')) {
-                console.log(text.current.value.indexOf('\\'));
+                // console.log(text.current.value.indexOf('\\'));
                 filterTasks(e.target.value);
             }
         }else{
@@ -30,7 +30,12 @@ const Search = ({ cat }) => {
     };
 
     const deleteFinishedRow = () => {
-        deleteFinalRow();
+        // deleteFinalRow();
+        userData.forEach(data => {
+            if(data.category === 'finished') {
+                deleteTask(data._id);
+            }
+        })
     };
 
     const changeSelectState = () => {

@@ -21,7 +21,6 @@ const InfoRowTask = ({ taskInfo, cat }) => {
         date
     });
 
-
     useEffect(() => {
         const elems = document.querySelectorAll('.collapsible');
         M.Collapsible.init(elems, {});

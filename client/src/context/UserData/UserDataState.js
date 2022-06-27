@@ -159,9 +159,9 @@ const UserDataState = props => {
     };
 
     // DELETE_FINAL_ROW
-    const deleteFinalRow = () => {
-        dispatch({ type: DELETE_FINAL_ROW });
-    };
+    // const deleteFinalRow = () => {
+    //     dispatch({ type: DELETE_FINAL_ROW });
+    // };
 
     // SET_CURRENT_TASK
     const setCurrentTask = (name) => {
@@ -222,7 +222,7 @@ const UserDataState = props => {
             error: state.error,
             getTasks,
             setCurrentFilterSelect,
-            deleteFinalRow,
+            // deleteFinalRow,
             deleteTask,
             addTask,
             updateTask,

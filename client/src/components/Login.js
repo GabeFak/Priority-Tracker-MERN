@@ -57,13 +57,13 @@ const Login = () => {
                     <Alerts />
                     <div className="row">
                         <div className="input-field col s12">
-                            <input id="email" type="email" name='email' value={email} onChange={onChange} className="validate" />
+                            <input style={{color: "darkslategray"}} id="email" type="email" name='email' value={email} onChange={onChange} className="validate" />
                             <label htmlFor="email">Email</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s12">
-                            <input id="password" type="password" name='password' value={password} onChange={onChange} className="validate" />
+                            <input style={{color: "darkslategray"}} id="password" type="password" name='password' value={password} onChange={onChange} className="validate" />
                             <label htmlFor="password">Password</label>
                         </div>
                     </div>

@@ -60,25 +60,25 @@ const Register = () => {
                 <Alerts />
                 <div className="row">
                     <div className="input-field col s12">
-                        <input id="userName" name='name' value={name} onChange={onChange} required type="text" className="validate" />
+                        <input style={{color: "darkslategray"}} id="userName" name='name' value={name} onChange={onChange} required type="text" className="validate" />
                         <label htmlFor="userName" >User Name</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input id="email" name='email' value={email} onChange={onChange} required type="email" className="validate" />
+                        <input style={{color: "darkslategray"}} id="email" name='email' value={email} onChange={onChange} required type="email" className="validate" />
                         <label htmlFor="email">Email</label> 
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input id="password" name='password' value={password} onChange={onChange} required minLength='6' type="password" className="validate" />
+                        <input style={{color: "darkslategray"}} id="password" name='password' value={password} onChange={onChange} required minLength='6' type="password" className="validate" />
                         <label htmlFor="password">Password</label>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input id="password2" name='password2' value={password2} onChange={onChange} minLength='6' type="password" className="validate" />
+                        <input style={{color: "darkslategray"}} id="password2" name='password2' value={password2} onChange={onChange} minLength='6' type="password" className="validate" />
                         <label htmlFor="password2">Retype Password</label>
                     </div>
                 </div>

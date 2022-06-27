@@ -31,14 +31,14 @@ const Reducer = (state, action) => {
                 loading: false
             };
 
-        case DELETE_FINAL_ROW:
-            let deleteFinished = state.userData;
-            let rowDeleted = deleteFinished.filter(cat => cat.category !== 'finished');
-            return {
-                ...state,
-                userData: rowDeleted,
-                loading: false
-            };
+        // case DELETE_FINAL_ROW:
+        //     let deleteFinished = state.userData;
+        //     let rowDeleted = deleteFinished.filter(cat => cat.category !== 'finished');
+        //     return {
+        //         ...state,
+        //         userData: rowDeleted,
+        //         loading: false
+        //     };
 
         case SET_LOADING:
             return {

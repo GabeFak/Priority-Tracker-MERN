@@ -1,9 +1,9 @@
 .container {
-    margin: 0 auto;
-    margin-top: 160px;
-    max-width: 1280px;
-    width: 55%;
-  }
+  margin: 0 auto;
+  margin-top: 160px;
+  max-width: 1280px;
+  width: 55%;
+}
 
 .alert {
   font-size: 1.4em;
@@ -23,7 +23,7 @@
 }
 
 .wide {
-    width: 100%;
+  width: 100%;
 }
 
 .brand-logo {
@@ -37,7 +37,6 @@
 .input-field input[type="search"]:focus ~ .mdi-navigation-close, .input-field input[type="search"] ~ .material-icons {
   position: absolute;
   top: 0;
-  /* right: .1rem; */
   color: transparent;
   cursor: pointer;
   font-size: 2rem;
@@ -102,36 +101,30 @@
   .brand-logo{
     margin-left: 20px;
   }
+  .btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
+    font-size: 10px;
+    outline: 0;
+  }
+  .btn{
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
+    font-size: 8px;
+  }
+  .btn{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 .transform {
   display: block;
 }
 
-/* for large monitor scaling */
-/* @media screen and (max-width: 4100px) {
-  .task-name {
-    font-size: 2.2em;
-  }
-  .calc-finished{
-    font-size: 1.9em;
-  }
-  .material-icons {
-    font-size: 3rem;
-  }
-}
-
-@media screen and (max-width: 1800px) {
-  .task-name {
-    font-size: 1.4em;
-  }
-  .calc-finished{
-    font-size: 15px;
-  }
-  .material-icons {
-    font-size: 2rem;
-  }
-} */
 
 @media screen and (max-width: 1080px) {
   .task-name {
@@ -168,13 +161,13 @@
     display: none;
   }
   
-element {
-  margin: unset;
-}
-.nav-wrapper .input-field input[type="search"] {
-  padding-left: 5px;
-}
+  element {
+    margin: unset;
+  }
 
+  .nav-wrapper .input-field input[type="search"] {
+    padding-left: 5px;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -189,12 +182,15 @@ element {
 .colour-1{
   background-color: rgba(250, 70, 101, 0.5);
 }
+
 .colour-2{
   background-color: rgba(250, 144, 70, 0.5);
 }
+
 .colour-3{
   background-color: rgba(234, 250, 70, 0.5);
 }
+
 .colour-4{
   background-color: rgba(99, 250, 70, 0.5);
 }
@@ -202,12 +198,15 @@ element {
 .colour-1-prime{
   background-color: #fca2b1;
 }
+
 .colour-2-prime{
   background-color: #fcc7a2;
 }
+
 .colour-3-prime{
   background-color: #f4fca2;
 }
+
 .colour-4-prime{
   background-color: #b0fca2;
 }
@@ -236,54 +235,52 @@ element {
   border-left: none;
 }
 
-
-  @media only screen and (min-width: 600px) {
-    .container {
-      width: 45%;
-    }
+@media only screen and (min-width: 600px) {
+  .container {
+    width: 45%;
+  }
   }
 
-  @media only screen and (min-width: 993px) {
-    .container {
-      width: 30%;
-    }
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 30%;
   }
+}
 
-  /* OverWrites Right links display being set to none */
-  @media only screen and (max-width: 992px){
-    .hide-on-med-and-down{
-        display:inline !important
-    }
+/* OverWrites Right links display being set to none */
+@media only screen and (max-width: 992px){
+  .hide-on-med-and-down{
+      display:inline !important
   }
+}
   
-  /* OverWrites Logo moving to center */
-  @media only screen and (max-width: 992px) {
-
-    nav .brand-logo {
-      left: 0%;
-      -webkit-transform: none !important;
-      transform: none !important;
-    }
-
-    nav .brand-logo.left,
-    nav .brand-logo.right {
-      padding:0;
-      -webkit-transform:none;
-      transform:none;
-    } 
-
-    nav .brand-logo.left {
-      left:0rem;
-    } 
-
-    nav .brand-logo.right{
-      right:0rem;
-      left:auto;
-    }
+/* OverWrites Logo moving to center */
+@media only screen and (max-width: 992px) {
+  nav .brand-logo {
+    left: 0%;
+    -webkit-transform: none !important;
+    transform: none !important;
   }
 
-  @media only screen and (max-width: 600px){
-    nav {
-      height: 64px;
-    }
+  nav .brand-logo.left,
+  nav .brand-logo.right {
+    padding:0;
+    -webkit-transform:none;
+    transform:none;
+  } 
+
+  nav .brand-logo.left {
+    left:0rem;
+  } 
+
+  nav .brand-logo.right{
+    right:0rem;
+    left:auto;
   }
+}
+
+@media only screen and (max-width: 600px){
+  nav {
+    height: 64px;
+  }
+}

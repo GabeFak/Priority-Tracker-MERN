@@ -122,11 +122,11 @@ const UpdateTaskModal = () => {
                 <div style={{marginRight: '24px', marginBottom: '20px'}}><b>Date created:</b> {taskUpdate.date}</div>
                 <div className='modal-btn-flow'>
                     {/* delete */}
-                    <a style={{marginLeft: '40px'}} className='modal-close btn-floating red' onClick={onDelete}><i className='material-icons'>delete</i></a>
+                    <a style={{marginLeft: '20px'}} className='modal-close btn-floating red btn-margin' onClick={onDelete}><i className='material-icons'>delete</i></a>
                     {/* cancel */}
-                    <a style={{marginLeft: '40px'}} href="#!" className="modal-close waves-effect waves-light btn green">Cancel</a>
+                    <a style={{marginLeft: '20px'}} href="#!" className="modal-close waves-effect waves-light btn green btn-margin">Cancel</a>
                     {/* submit */}
-                    <a style={{marginLeft: '40px'}} href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn">Enter</a>
+                    <a style={{marginLeft: '20px'}} href="#!" onClick={onSubmit} className="modal-close waves-effect waves-light btn btn-margin">Enter</a>
                 </div>
             </div>
         </div>
