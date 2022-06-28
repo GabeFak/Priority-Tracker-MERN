@@ -1,0 +1,27 @@
+
+
+.modal .modal-footer {
+    padding-right: 24px;
+}
+
+@media screen and (max-width: 4800px) {
+    .modal .modal-footer {
+        padding-right: 72px;
+        /* 24px see modalFooterAdjust.css*/    
+      }
+    }
+
+@media screen and (max-width: 2250px) {
+.modal .modal-footer {
+    padding-right: 42px;
+    /* 24px see modalFooterAdjust.css*/    
+  }
+}
+
+@media screen and (max-width: 1920px) {
+    .modal .modal-footer {
+        padding-right: 24px;
+        /* 24px see modalFooterAdjust.css*/    
+      }
+    }
+/* uncomment */

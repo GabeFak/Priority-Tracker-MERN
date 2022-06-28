@@ -72,7 +72,7 @@ const AddNewTaskStartedModal = () => {
     return (
         <div id='new-task-modal-started' className='modal' style={{width: '65%', height: '65%'}}>
             <div className='modal-content'>
-                <h4>Create New Backlog Task</h4>
+                <h4>Create New Started Task</h4>
                 <div className='row'>
                     <div className='input-feild'>
                         <input onClick={addDate} type="text" name="name" value={newTask.name} onChange={e => setNewTask({...newTask, name: e.target.value})}/>
@@ -94,7 +94,7 @@ const AddNewTaskStartedModal = () => {
                     : 
                         loopThroughSubTasks()
                     }
-                    <button style={{marginTop: '8px'}}><i className='material-icons' style={{color: "darkslategray"}} onClick={newSubTask}>add</i></button> 
+                    <button className="add-btn" ><i className='material-icons add' style={{color: "darkslategray"}} onClick={newSubTask}>add</i></button> 
                 </div>
                 <div className='row'>
                     <div className='input-feild'>

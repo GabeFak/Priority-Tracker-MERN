@@ -117,8 +117,8 @@ const InfoRowTask = ({ taskInfo, cat }) => {
                     </div> 
                 </div>
                 <div className="collapsible-body">
-                    <span> <i>Description:</i> {description}</span>
-                    <div style={{ lineHeight: '3'}}>
+                    <span className='descript'> <i>Description:</i> {description}</span>
+                    <div>
                         {category !== "backlog" ? 
                             <>
                                 <div className='box-spacer'>
@@ -130,7 +130,7 @@ const InfoRowTask = ({ taskInfo, cat }) => {
                             </>
                         : 
                             <>
-                                <div className='box-spacer-2' style={{marginTop: '10px'}}>
+                                <div className='box-spacer-2'>
                                     <a className='btn-floating red' onClick={onDelete} ><i className='material-icons'>delete</i></a>
                                     <a className='btn-floating orange' onClick={setTaskToStarted}><i className='material-icons'>arrow_forward</i></a>
                                 </div>

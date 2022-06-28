@@ -43,6 +43,7 @@
   transition: .3s color;
 }
 
+
 /* .nav-wrapper .input-field input[type="search"] {
   height: inherit;
   padding-left: 4rem;
@@ -50,6 +51,27 @@
   border: 0;
   box-shadow: none;
 } */
+@media screen and (max-width: 4800px) {
+  .input-field input[type ="search"]:focus:not(.browser-default) {
+    padding-left: 5rem;
+    /* 4rem */
+  }
+}
+
+@media screen and (max-width: 2250px) {
+  .input-field input[type ="search"]:focus:not(.browser-default) {
+    padding-left: 4.5rem;
+    /* 4rem */
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  .input-field input[type ="search"]:focus:not(.browser-default) {
+    padding-left: 3rem;
+    /* 4rem */
+  }
+}
+
 
 /* Uncomment */
 
@@ -85,9 +107,24 @@
   margin-left: 15px;
 }
 
-/* .task-name {
-  font-size: 1.4em;
-} */
+@media screen and (max-width: 4800px) {
+  .task-name {
+    font-size: 3.8em;
+    /* 1.2 */
+  }
+}
+@media screen and (max-width: 2250px) {
+  .task-name {
+    font-size: 2.6em;
+    /* 1.2 */
+  }
+}
+@media screen and (max-width: 1920px) {
+  .task-name {
+    font-size: 1.4em;
+  }
+}
+
 /* Uncomment */
 
 @media screen and (max-width: 775px) {
@@ -171,6 +208,10 @@
   .nav-wrapper .input-field input[type="search"] {
     padding-left: 5px;
   }
+
+  .input-field input[type ="search"]:focus:not(.browser-default) {
+    padding-left: 5px;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -179,6 +220,9 @@
   }
   .calc-finished{
     font-size: 0.8em;
+  }
+  .collapsible-body{
+    padding: 1rem;
   }
 }
 
@@ -242,7 +286,7 @@
   .container {
     width: 45%;
   }
-  }
+}
 
 @media only screen and (min-width: 993px) {
   .container {

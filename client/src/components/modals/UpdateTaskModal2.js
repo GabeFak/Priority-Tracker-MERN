@@ -63,19 +63,19 @@ const UpdateTaskModal = () => {
                 <h4>Edit Task</h4>
                 <div className='row'>
                     <div className='input-feild'>
-                        <input className="modal-input-feild" type="text" name="name" value={taskUpdate.name} onChange={e => setTaskUpdate({...taskUpdate, name: e.target.value})}/>
+                        <input className="modal-input-feild edit-modal-input" type="text" name="name" value={taskUpdate.name} onChange={e => setTaskUpdate({...taskUpdate, name: e.target.value})}/>
                         <label htmlFor='name' className='active'>Name</label>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='input-feild'>
-                            <input  className="modal-input-feild" type="text" name="description" value={taskUpdate.description} onChange={e => setTaskUpdate({...taskUpdate, description: e.target.value})}/>
+                            <input  className="modal-input-feild edit-modal-input" type="text" name="description" value={taskUpdate.description} onChange={e => setTaskUpdate({...taskUpdate, description: e.target.value})}/>
                             <label htmlFor='description' className='active'>Description</label>
                     </div>
                 </div>
                 <div className='row'>
                     {loopThroughSubTasks()}
-                    <button style={{marginTop: '8px'}}><i className='material-icons' style={{color: "darkslategray"}} onClick={newSubTask}>add</i></button> 
+                    <button className='add-btn add-plus'><i className='material-icons add' style={{color: "darkslategray"}} onClick={newSubTask}>add</i></button> 
                 </div>
                 <div className='row'>
                     <Chips setTask={ setTaskUpdate } task={ taskUpdate } />
@@ -119,7 +119,7 @@ const UpdateTaskModal = () => {
             </div>
             <div className='modal-footer'>
                 {/* Date Created Display */}
-                <div style={{marginRight: '24px', marginBottom: '20px'}}><b>Date created:</b> {taskUpdate.date}</div>
+                <div className='display-date' style={{ marginBottom: '20px'}}><b>Date created:</b> {taskUpdate.date}</div>
                 <div className='modal-btn-flow'>
                     {/* delete */}
                     <a style={{marginLeft: '20px'}} className='modal-close btn-floating red btn-margin' onClick={onDelete}><i className='material-icons'>delete</i></a>

@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import UserDataContext from '../../context/UserData/UserDataContext';
 import UpdateTaskModalNewTaskSubItem from './UpdateTaskModalNewTaskSubItem';
 import AlertContext from '../../context/Alert/AlertContext';
+import '../../modalFooterAdjust.css';
 
 const NewTaskBacklogModal = () => {
     const userDataContext = useContext(UserDataContext);
@@ -108,7 +109,7 @@ const NewTaskBacklogModal = () => {
                     : 
                         loopThroughSubTasks()
                     }
-                    <button style={{marginTop: '8px'}}><i className='material-icons' style={{color: "darkslategray"}} onClick={newSubTask}>add</i></button> 
+                    <button className="add-btn"><i className='material-icons add' style={{color: "darkslategray"}} onClick={newSubTask}>add</i></button> 
                 </div>
 
                 <div className='row'>
@@ -130,7 +131,7 @@ const NewTaskBacklogModal = () => {
                     </div>
                 </div>
             </div>
-            <div className='modal-footer' style={{paddingRight: '24px'}}>
+            <div className='modal-footer'>
                 {/* cancel */}
                 <a style={{marginLeft: '40px'}} href="#!" onClick={onClear} className="modal-close waves-effect waves-light btn green">Cancel</a>
                 {/* submit */}
