@@ -58,7 +58,7 @@ const UpdateTaskModal = () => {
     };
 
     return (
-        <div id='edit-task-modal-2' className='modal edit-modal' style={{width: '60%', height: '60%'}}>
+        <div id='edit-task-modal-2' className='modal edit-modal' >
             <div className='modal-content'>
                 <h4>Edit Task</h4>
                 <div className='row'>

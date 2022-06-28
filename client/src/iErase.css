@@ -1,12 +1,3 @@
 div:first-child > i {
     display: none;
   }
-
-  /* Materialize is weird. The data stored inside of M.init cannot be removed from useEffect where it's stored even when using refs or setting it to useState outside of the hook's scope.
-  It is important to note that the tags inside of the data structure are specifically formated to be used with the materialize chips initialization.
-  Because the tag data from the parent state is writen to M.init upon first render, any subsequent data that is added to the chip component gets updated inside of the components parent state as well.
-  Thus, it also get submited to the higher-level context state when the form is submited.   
-  This only works if there is data to render inside of the M.init state brought down as a prop from the parent component upon first render. If there  isn't any tags, the user's added tags will not get saved to the parent state.
-  To prevent this, the data upon user initialization, will include a tag of 'Tags' that cannot be deleted so at least one tag will always be rendered into the chip component thus allowing all
-  other tags to be passed up state. This css grabs the div's first child in the chips component and deletes the 'Delete' icon, making it so a user cannot accedentally delete it. It also serves as a UI label for where the tag section is.
-  Thus, because Materialize chips are not optimized for the use cases of react (unlike materialize UI) this hackey process needs to be done. */

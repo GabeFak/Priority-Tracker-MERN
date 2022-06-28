@@ -59,7 +59,7 @@ const Search = ({ cat }) => {
 
     return (
         <div className ={setColor()} style={{position: "fixed", zIndex: "0", top: "64px", width: "inherit", marginBottom: "55px", display: 'flex', flexDirection: "row"}}>
-            <div style={{height: "55px",display: 'flex', alignItems: "center"}}>
+            <div className="shrink" style={{height: "55px",display: 'flex', alignItems: "center"}}>
                 {cat !== "backlog" && cat !== "started" ? 
                     <>
                         {cat !== "finished" ?                  

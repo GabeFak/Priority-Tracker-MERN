@@ -121,7 +121,7 @@ const InfoRowTask = ({ taskInfo, cat }) => {
                     <div>
                         {category !== "backlog" ? 
                             <>
-                                <div className='box-spacer'>
+                                <div className='shrink box-spacer'>
                                     <div className='media-hide'>{listFinished()}</div>
                                     <div className='media-hide'>{setPriority()}</div>
                                     <div className='media-hide'>{displayDate()}</div>
@@ -130,7 +130,7 @@ const InfoRowTask = ({ taskInfo, cat }) => {
                             </>
                         : 
                             <>
-                                <div className='box-spacer-2'>
+                                <div className='shrink box-spacer-2'>
                                     <a className='btn-floating red' onClick={onDelete} ><i className='material-icons'>delete</i></a>
                                     <a className='btn-floating orange' onClick={setTaskToStarted}><i className='material-icons'>arrow_forward</i></a>
                                 </div>

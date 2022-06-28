@@ -70,7 +70,7 @@ const AddNewTaskStartedModal = () => {
     };
     
     return (
-        <div id='new-task-modal-started' className='modal' style={{width: '65%', height: '65%'}}>
+        <div id='new-task-modal-started' className='modal new-task-modal-s' >
             <div className='modal-content'>
                 <h4>Create New Started Task</h4>
                 <div className='row'>

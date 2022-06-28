@@ -1,4 +1,3 @@
-
 /* for large monitor scaling */
 @media screen and (max-width: 4800px) {
   header, nav, .nav-wrapper{
@@ -29,7 +28,6 @@
     font-size: 4rem; 
     /* 1em */
   }
-
   input:not([type]), input[type="text"]:not(.browser-default), input[type="password"]:not(.browser-default), input[type="email"]:not(.browser-default), input[type="url"]:not(.browser-default), input[type="time"]:not(.browser-default), input[type="date"]:not(.browser-default), input[type="datetime"]:not(.browser-default), input[type="datetime-local"]:not(.browser-default), input[type="tel"]:not(.browser-default), input[type="number"]:not(.browser-default), input[type="search"]:not(.browser-default), textarea.materialize-textarea {
     height: 6rem;
     /* 3rem */
@@ -39,34 +37,28 @@
     /* 0 0 8px 0 */
     padding: 0;
   }
-
   .input-field > label{
     font-size: 2.5rem; 
     /* 1em */
    } 
-
   .btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
     font-size: 3rem;
   }
-
   .wide {
     height: 100px;
     /* none */
   }
-
   .alert{
-      font-size: 3;
-      /* 1.4em */
-      padding-bottom: 40px;
-      /* 4px */
+    font-size: 3;
+    /* 1.4em */
+    padding-bottom: 40px;
+    /* 4px */
   }
-
   .authLinks li{
     font-size: 3em;
     padding-top: 25px;
     /* none both */
   }
-
   .authLinks li a i{
     font-size: 3em;
     /* none */
@@ -74,39 +66,29 @@
   .colour-1-prime, .colour-2-prime, .colour-3-prime, .colour-4-prime{
     margin-top: 64px;
     /* no margin set */
-}
-
-.psudo-spacer{
+  }
+  .psudo-spacer{
     margin-bottom: 128px;
     /* 55px */
-}
-
-.label-icon i{
-        font-size: 4rem;
-        /* 3rem */
-        padding-top: 10px;
-        /* none */
-}
-
-.nav-wrapper .input-field input[type="search"] {
+  }
+  .label-icon i{
+    font-size: 4rem;
+    /* 3rem */
+    padding-top: 10px;
+      /* none */
+  }
+  .nav-wrapper .input-field input[type="search"] {
     padding-left: 5rem;
     /* 4rem */
   }
-
-.input-field input[type ="search"]:focus:not(.browser-default) {
+  .input-field input[type ="search"]:focus:not(.browser-default) {
     padding-left: 5rem;
     /* 4rem */
   }
-  /* This needs to be put into materializeOverride.css under a media queary of the same dymentions */
-
-
   .btn-floating > .material-icons {
-
     font-size: 3.6rem;
     /* 1.6rem */
-    
   }
-
   .btn-floating{
     margin-left: 20px;
     /* 10px */
@@ -119,25 +101,18 @@
     line-height: 100px;
     /* 40px */
   }
-
   .input-field {
     margin-top: 1.5rem;
     /* 1rem */
   }
-  
-
   .task-name {
     font-size: 3.2em;
     /* 1.2 */
   }
-/* This needs to be put into materializeOverride.css under a media queary of the same dymentions */
-
-
   .calc-finished{
     font-size: 2.9em;
     /* 1em */
   }
-
   .collapsible-header i {
     font-size: 4rem;
     /* 1.6rem */
@@ -167,7 +142,6 @@
     margin-top: 25px;
     /* 70 */
   }
-  
   /* Modals */
   .modal .modal-content {
     padding: 72px;
@@ -177,7 +151,6 @@
     font-size: 4.8em;
     /* 2.28rem */
   }
-
   label {
     font-size: 2.0rem;
     /* .8rem */
@@ -186,7 +159,6 @@
     line-height: 0.8em;
     /* 1.5 */
   }
-
   .add {
     font-size: 54px;
     /* 24px */
@@ -201,7 +173,6 @@
     height: 5rem;
     /* 3rem */
   }
-
   .btn, .btn-large, .btn-small, .btn-flat {
     height: 70px;
     /* 36px */
@@ -209,50 +180,40 @@
     /* 0 16px */
     margin-bottom: 72px;
   }
-
   .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-small, .modal .modal-footer .btn-flat {
     margin-bottom: 72px;
     /* margin: 6px 0;
       margin-left: 0px; */
   }
-
   .modal .modal-footer {
-    padding-right: 72px;
-    /* 24px see modalFooterAdjust.css*/    
+    padding-right: 72px;   
   }
   .filled-in{
-      /* Double-sized Checkboxes */
-  -ms-transform: scale(2.5); /* IE */
-  -moz-transform: scale(2.5); /* FF */
-  -webkit-transform: scale(2.5); /* Safari and Chrome */
-  -o-transform: scale(2.5); /* Opera */
-  transform: scale(2.5);
-  margin-left: 10px;
-  margin-bottom: 20px;
-  /* all above none */
-
-  margin-top: 25px;
-  /* 4px */
+    -ms-transform: scale(2.5); /* IE */
+    -moz-transform: scale(2.5); /* FF */
+    -webkit-transform: scale(2.5); /* Safari and Chrome */
+    -o-transform: scale(2.5); /* Opera */
+    transform: scale(2.5);
+    margin-left: 10px;
+    margin-bottom: 20px;
+    /* all above none */
+    margin-top: 25px;
+    /* 4px */
   }
-
-
   .add-plus{
     margin-top: 40px;
     /* none */
   }
-
   .chip {
     font-size: 40px;
     /* 13px */
   }
-
   .chip .close {
     font-size: 34px;
     /* 16px */
     line-height: 36px;
     /* 32px */
   }
-
   .chips > .input{
     font-size: 40px;
     /* 16px */
@@ -267,536 +228,320 @@
   }
 }
 
-/* @media screen and (max-width: 1800px) {
-  .task-name {
-    font-size: 1.4em;
-  }
-  .calc-finished{
-    font-size: 15px;
-  }
-  .material-icons {
-    font-size: 2rem;
-  }
-}  */
-
 /* Scaling around 2200 px */
 @media screen and (max-width: 2250px) {
-  /* header, nav, .nav-wrapper{
-    height: 128px;
-  } */
-  /* none */
   nav .brand-logo {
     font-size: 3.1rem;
-    /* 2.1rem */
   } 
-  /* .brand-logo{
-    margin-top: 30px;  */
-    /* none */
-  /* }  */
   .landing-links li a  {
     font-size: 2.0em;
-    /* 1rem */
    } 
   .reg-log{
     font-size: 2rem; 
-    /* large */
   } 
   .validate{
     font-size: 2rem; 
-    /* 1em */
   }
-
   input:not([type]), input[type="text"]:not(.browser-default), input[type="password"]:not(.browser-default), input[type="email"]:not(.browser-default), input[type="url"]:not(.browser-default), input[type="time"]:not(.browser-default), input[type="date"]:not(.browser-default), input[type="datetime"]:not(.browser-default), input[type="datetime-local"]:not(.browser-default), input[type="tel"]:not(.browser-default), input[type="number"]:not(.browser-default), input[type="search"]:not(.browser-default), textarea.materialize-textarea {
     height: 4.5rem;
-    /* 3rem */
     font-size: 2em;
-    /* 1em */
     margin: 0 0 28px 0;
-    /* 0 0 8px 0 */
   }
-
   .input-field > label{
     font-size: 2rem; 
-    /* 1em */
-   } 
-
+  } 
   .btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
     font-size: 2rem;
   }
-
-  /* .wide {
-    height: 50px; */
-    /* none */
-  /* } */
-
   .alert{
-      font-size: 2;
-      /* 1.4em */
-      padding-bottom: 20px;
-      /* 4px */
+    font-size: 2;
+    padding-bottom: 20px;
   }
-
   .authLinks li{
     font-size: 2em;
-    /* padding-top: 10px; */
-    /* none both */
   }
-
   .authLinks li a i{
     font-size: 2em;
-    /* none */
   }
   .colour-1-prime, .colour-2-prime, .colour-3-prime, .colour-4-prime{
-    /* margin-top: 42sp; */
-    /* no margin set */
     height: 110px;
-}
-
-.psudo-spacer{
+  }
+  .psudo-spacer{
     margin-bottom: 110px;
-    /* 55px */
-}
-
-.label-icon i{
-        font-size: 3.2rem;
-        /* 3rem */
-        padding-top: 5px;
-        /* none */
-}
-
-.nav-wrapper .input-field input[type="search"] {
-    padding-left: 4.5rem;
-    /* 4rem */
   }
-
-.input-field input[type ="search"]:focus:not(.browser-default) {
-    padding-left: 4.5rem;
-    /* 4rem */
+  .label-icon i{
+    font-size: 3.2rem;
+    padding-top: 5px;
   }
-  /* This needs to be put into materializeOverride.css under a media queary of the same dymentions */
-
-
+  .nav-wrapper .input-field input[type="search"] {
+    padding-left: 4.5rem;
+  }
+  .input-field input[type ="search"]:focus:not(.browser-default) {
+    padding-left: 4.5rem;
+  }
   .btn-floating > .material-icons {
-
     font-size: 2.6rem;
-    /* 1.6rem */
-    
   }
-
   .btn-floating{
     margin-left: 15px;
-    /* 10px */
     margin-top: 50px;
-    /* none */
     width: 60px;
-    /* 40px */
     height: 60px;
-    /* 40px */
     line-height: 80px;
-    /* 40px */
   }
-
   .input-field {
     margin-top: 1.5rem;
-    /* 1rem */
   }
-  
-
   .task-name {
     font-size: 2.8em;
-    /* 1.2 */
   }
-/* This needs to be put into materializeOverride.css under a media queary of the same dymentions */
-
-
   .calc-finished{
     font-size: 1.9em;
-    /* 1em */
   }
-
   .collapsible-header i {
     font-size: 2.8rem;
-    /* 1.6rem */
   }
   .descript{
     font-size: 2.5em;
-    /* none */
   }
-
   .box-spacer{
     font-size: 2em;
-    /* none */
     line-height: 3;
-    /* none */
   }
   .media-space-top{
     margin-top: 10px;
-    /* none */
   }
   .box-spacer-2{
     height: 135px;
-    /* 105 */
     margin-top: unset;
-    /* allnone */
   }
   .box-spacer-2 a{
     margin-top: 60px;
-    /* 70 */
   }
-  
   /* Modals */
   .modal .modal-content {
     padding: 50px;
-    /* 24px */
   }
   .modal-content h4 {
     font-size: 3.8em;
-    /* 2.28rem */
   }
-
   label {
     font-size: 1.4rem;
-    /* .8rem */
   }
   .input-feild{
     line-height: 1.2em;
-    /* 1.5 */
   }
-
   .add {
     font-size: 30px;
-    /* 24px */
   }
   .add-btn{
     margin-top: 12px;
-    /* 8px */
   }
   .browser-default{
     font-size: 1.8em;
-    /* none */
     height: 3.6rem;
-    /* 3rem */
   }
-
   .btn, .btn-large, .btn-small, .btn-flat {
     height: 45px;
-    /* 36px */
     padding: 6px 16px;
-    /* 0 16px */
-    /* margin-bottom: 72px; */
   }
-
   .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-small, .modal .modal-footer .btn-flat {
     margin-bottom: 40px;
-    /* margin: 6px 0;
-      margin-left: 0px; */
   }
-
-
-  .filled-in{
-      /* Double-sized Checkboxes */
-  -ms-transform: scale(1.8); /* IE */
-  -moz-transform: scale(1.8); /* FF */
-  -webkit-transform: scale(1.8); /* Safari and Chrome */
-  -o-transform: scale(1.8); /* Opera */
-  transform: scale(1.8);
-  margin-left: 5px;
-  margin-bottom: 15px;
-  /* all above none */
-
-  margin-top: 18px;
-  /* 4px */
+  .filled-in {
+    -ms-transform: scale(1.8); /* IE */
+    -moz-transform: scale(1.8); /* FF */
+    -webkit-transform: scale(1.8); /* Safari and Chrome */
+    -o-transform: scale(1.8); /* Opera */
+    transform: scale(1.8);
+    margin-left: 5px;
+    margin-bottom: 15px;
+    margin-top: 18px;
   }
-
-
   .add-plus{
     margin-top: 30px;
-    /* none */
   }
-
   .chip {
     font-size: 20px;
-    /* 13px */
   }
-
   .chip .close {
     font-size: 20px;
-    /* 16px */
     line-height: 34px;
-    /* 32px */
   }
-
-  .chips > .input{
+  .chips > .input {
     font-size: 22px;
-    /* 16px */
   }
-  .display-date{
+  .display-date {
     font-size: 24px;
-    /* none */
   }
-  .modal-btn-flow > a{
+  .modal-btn-flow > a {
     margin-top: unset;
-    /* None */
   }
 }
-
 
 /* Scaling around 1920 px */
 @media screen and (max-width: 1920px) {
   header, nav, .nav-wrapper{
     height: 64px;
   }
-  /* none */
   nav .brand-logo {
     font-size: 2.1rem;
-    /* 2.1rem */
   } 
   .brand-logo{
     margin-top: 0; 
-    /* none */
   } 
   .landing-links li a  {
     font-size: 1.0em;
-    /* 1rem */
-   } 
+  } 
   .reg-log{
     font-size: large; 
-    /* large */
   } 
   .validate{
     font-size: 1rem; 
-    /* 1em */
   }
-
   input:not([type]), input[type="text"]:not(.browser-default), input[type="password"]:not(.browser-default), input[type="email"]:not(.browser-default), input[type="url"]:not(.browser-default), input[type="time"]:not(.browser-default), input[type="date"]:not(.browser-default), input[type="datetime"]:not(.browser-default), input[type="datetime-local"]:not(.browser-default), input[type="tel"]:not(.browser-default), input[type="number"]:not(.browser-default), input[type="search"]:not(.browser-default), textarea.materialize-textarea {
     height: 3rem;
-    /* 3rem */
     font-size: 16px;
-    /* 1em */
     margin: 0 0 8px 0;
-    /* 0 0 8px 0 */
   }
-
   .input-field > label{
     font-size: 1em; 
-    /* 1em */
    } 
-
-   .landing-links li a {
+  .landing-links li a {
     margin-top: 0px;
     padding-left: 15px;
   }
-
   .btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
     font-size: 1rem;
   }
-
   .wide {
     height: 0px;
-    /* none */
   }
-
   .alert{
-      font-size: 1.4em;
-      /* 1.4em */
-      padding-bottom: 4px;
-      /* 4px */
+    font-size: 1.4em;
+    padding-bottom: 4px;
   }
-
   .authLinks li{
     font-size: 14.5px;
     padding-top: unset;
-    /* none both */
   }
-
   .authLinks li a i{
     font-size: 24px;
-    /* none */
   }
   .colour-1-prime, .colour-2-prime, .colour-3-prime, .colour-4-prime{
     margin-top: unset;
-    /* no margin set */
     height: 55px;
-}
-
-.psudo-spacer{
+  }
+  .psudo-spacer{
     margin-bottom: 55px;
-    /* 55px */
-}
-
-.label-icon i{
-        font-size: 3rem;
-        /* 3rem */
-        padding-top: 0px;
-        /* none */
-}
-
-.nav-wrapper .input-field input[type="search"] {
+  }
+  .label-icon i{
+    font-size: 3rem;
+    padding-top: 0px;
+  }
+  .nav-wrapper .input-field input[type="search"] {
     padding-left: 3rem;
-    /* 4rem */
   }
-
   .btn-floating > .material-icons {
-
     font-size: 1.6rem;
-    /* 1.6rem */
-    
   }
-
   .btn-floating{
     margin-left: 10px;
-    /* 10px */
     margin-top: 0px;
-    /* none */
     width: 40px;
-    /* 40px */
     height: 40px;
-    /* 40px */
     line-height: 40px;
-    /* 40px */
   }
-
   .input-field {
     margin-top: 1rem;
-    /* 1rem */
   }
-
   .calc-finished{
     font-size: 1em;
-    /* 1em */
   }
-
   .collapsible-header i {
     font-size: 1.6rem;
-    /* 1.6rem */
   }
   .descript{
     font-size: 14.5px;
-    /* none */
   }
-
   .box-spacer{
     font-size: 14.5px;
-    /* none */
     line-height: 1.5;
-    /* none */
   }
   .media-space-top{
     margin-top: 0px;
-    /* none */
   }
   .box-spacer-2{
     height: 40px;
-    /* 105 */
     margin-top: unset;
-    /* allnone */
   }
   .box-spacer-2 a{
     margin-top: 0px;
   }
-
   /* Modals */
   .modal .modal-content {
     padding: 24px;
-    /* 24px */
   }
   .modal-content h4 {
     font-size: 2.28em;
-    /* 2.28rem */
   }
-
   .label-icon i {
     font-size: 1.8rem;
-    /* .8rem */
   }
   .input-feild{
     line-height: 1.5em;
-    /* 1.5 */
   }
-
   .add {
     font-size: 24px;
-    /* 24px */
   }
   .add-btn{
     margin-top: 8px;
-    /* 8px */
   }
-
   .browser-default{
     font-size: 100%;
-    /* none */
     height: 3rem;
-    /* 3rem */
   }
-
   .btn, .btn-large, .btn-small, .btn-flat {
     height: 36px;
-    /* 36px */
     padding: 0px 16px;
-    /* 0 16px */
-    /* margin-bottom: 72px; */
   }
-
   .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-small, .modal .modal-footer .btn-flat {
     margin-bottom: 24px;
-    /* margin: 6px 0; */
       margin-left: 24px;
   }
-
   label {
     font-size: 0.8rem;
   }
- 
-
   .filled-in{
-      /* Double-sized Checkboxes */
-  -ms-transform: scale(1); /* IE */
-  -moz-transform: scale(1); /* FF */
-  -webkit-transform: scale(1); /* Safari and Chrome */
-  -o-transform: scale(1); /* Opera */
-  transform: scale(1);
-  margin-left: 0px;
-  margin-bottom: 0px;
-  /* all above none */
-
-  margin-top: 4px;
-  /* 4px */
+    -ms-transform: scale(1); /* IE */
+    -moz-transform: scale(1); /* FF */
+    -webkit-transform: scale(1); /* Safari and Chrome */
+    -o-transform: scale(1); /* Opera */
+    transform: scale(1);
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: 4px;
   }
-
-
   .add-plus{
     margin-top: 10px;
-    /* none */
   }
-
   .chip {
     font-size: 13px;
-    /* 13px */
   }
-
   .chip .close {
     font-size: 16px;
-    /* 16px */
     line-height: 32px;
-    /* 32px */
   }
-
   .chips > .input{
     font-size: 16px;
-    /* 16px */
   }
   .display-date{
     font-size: 14px;
-    /* none */
   }
   .modal-btn-flow > a{
     margin-top: unset;
-    /* None */
   }
-
   .modal-btn-flow{
     padding-right: unset;
-    /* None */
   }
 }

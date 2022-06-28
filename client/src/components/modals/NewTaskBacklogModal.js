@@ -83,7 +83,7 @@ const NewTaskBacklogModal = () => {
 
     
     return (
-        <div id='new-task-modal' className='modal' style={{width: '65%', height: '65%'}}>
+        <div id='new-task-modal' className='modal' >
             <div className='modal-content'>
                 <h4>Create New Backlog Task</h4>
                 {/* <Alerts /> */}

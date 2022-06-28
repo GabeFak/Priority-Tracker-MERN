@@ -43,37 +43,23 @@
   transition: .3s color;
 }
 
-
-/* .nav-wrapper .input-field input[type="search"] {
-  height: inherit;
-  padding-left: 4rem;
-  width: calc(100% - 1em);
-  border: 0;
-  box-shadow: none;
-} */
 @media screen and (max-width: 4800px) {
   .input-field input[type ="search"]:focus:not(.browser-default) {
     padding-left: 5rem;
-    /* 4rem */
   }
 }
 
 @media screen and (max-width: 2250px) {
   .input-field input[type ="search"]:focus:not(.browser-default) {
     padding-left: 4.5rem;
-    /* 4rem */
   }
 }
 
 @media screen and (max-width: 1920px) {
   .input-field input[type ="search"]:focus:not(.browser-default) {
     padding-left: 3rem;
-    /* 4rem */
   }
 }
-
-
-/* Uncomment */
 
 .btn-floating {
   margin-left: 10px;
@@ -110,22 +96,20 @@
 @media screen and (max-width: 4800px) {
   .task-name {
     font-size: 3.8em;
-    /* 1.2 */
   }
 }
+
 @media screen and (max-width: 2250px) {
   .task-name {
     font-size: 2.6em;
-    /* 1.2 */
   }
 }
+
 @media screen and (max-width: 1920px) {
   .task-name {
     font-size: 1.4em;
   }
 }
-
-/* Uncomment */
 
 @media screen and (max-width: 775px) {
   .media-hide {
@@ -165,7 +149,6 @@
   display: block;
 }
 
-
 @media screen and (max-width: 1080px) {
   .task-name {
     font-size: 1.2em;
@@ -173,7 +156,6 @@
   .calc-finished{
     font-size: 1.2em;
   }
-
   .material-icons {
     font-size: 1.6rem;
   }
@@ -192,23 +174,18 @@
   .material-icons {
     font-size: 16px;
   }
-
   input[type ="search"]{
     padding: unset;
   }
-
   .search-icon{
     display: none;
   }
-  
   element {
     margin: unset;
   }
-
   .nav-wrapper .input-field input[type="search"] {
     padding-left: 5px;
   }
-
   .input-field input[type ="search"]:focus:not(.browser-default) {
     padding-left: 5px;
   }
@@ -223,6 +200,37 @@
   }
   .collapsible-body{
     padding: 1rem;
+  }
+  .shrink{
+    transform: scale(0.7);
+    transform-origin: -5px;
+  }
+  .nav-wrapper .input-field input[type="search"] {
+    width: 100%;
+    margin-left: unset;
+  }
+  .input-field input[type ="search"]:focus:not(.browser-default) {
+    width: 100%;
+    margin-left: unset;
+  }
+  .box-spacer-2{
+    margin-left: 60px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .btn {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .descript {
+    font-size: 10.5px;
+  }
+  .calc-finished {
+    display: none;
+  }
+  .collapsible-header i {
+    margin-right: 0rem;
   }
 }
 
@@ -308,18 +316,15 @@
     -webkit-transform: none !important;
     transform: none !important;
   }
-
   nav .brand-logo.left,
   nav .brand-logo.right {
     padding:0;
     -webkit-transform:none;
     transform:none;
   } 
-
   nav .brand-logo.left {
     left:0rem;
   } 
-
   nav .brand-logo.right{
     right:0rem;
     left:auto;
