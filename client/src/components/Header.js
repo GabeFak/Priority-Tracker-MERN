@@ -16,7 +16,7 @@ const Header = () => {
     };
 
     const authLinks = (
-        <Fragment>
+        <div>
             <li>
                 Hello { user && user.name }
             </li>
@@ -25,18 +25,18 @@ const Header = () => {
                     <i className='material-icons'>arrow_forward</i>
                 </a>
             </li>
-        </Fragment>
+        </div>
     );
 
     const guistLinks = (
-        <Fragment>
+        <div className='landing-links'>
             <li>
                 <Link to="/">Login</Link>
             </li>
             <li>
                 <Link to="/Register">Register</Link>
             </li>
-        </Fragment>
+        </div>
     );
 
     return (

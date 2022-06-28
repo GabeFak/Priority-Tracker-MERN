@@ -37,37 +37,6 @@ nav {
   margin-left: 40px;
 }
 
-/* for large monitor scaling */
-/* @media screen and (max-width: 4800px) {
-  header, nav, .nav-wrapper{
-    height: 128px;
-  }
-  nav .brand-logo {
-    position: absolute;
-    color: #fff;
-    display: inline-block;
-    font-size: 6.1rem;
-    padding: 0;
-  }
-  .task-name {
-    font-size: 2.2em;
-  }
-  .calc-finished{
-    font-size: 1.9em;
-  }
-  .material-icons {
-    font-size: 3rem;
-  }
-} */
-
-/* @media screen and (max-width: 1800px) {
-  .task-name {
-    font-size: 1.4em;
-  }
-  .calc-finished{
-    font-size: 15px;
-  }
-  .material-icons {
-    font-size: 2rem;
-  }
-}  */
+.psudo-spacer{
+  margin-bottom: 55px;
+}

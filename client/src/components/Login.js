@@ -72,7 +72,7 @@ const Login = () => {
                             <button className="waves-effect waves-light btn wide" type="submit" value="Login" >Login</button>
                         </div>
                         <div className="input-field col s6">
-                            <Link className="waves-effect waves-light btn wide" to="/Register">Register</Link>
+                            <Link to="/Register"><button className="waves-effect waves-light btn wide">Register</button></Link>
                         
                         </div>
                     </div>

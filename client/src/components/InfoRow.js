@@ -18,7 +18,8 @@ const InfoRow = ({ cat }) => {
         <div className="col s3" style={{overflow: "scroll", height: "100vh", paddingBottom: "64px", paddingLeft: "unset", paddingRight: "unset", msOverflowStyle: "none", scrollbarWidth: "none"}}>
             <Search cat={cat}/>
             
-            <div style={{ marginBottom: "55px" }}></div>
+            {/* <div style={{ marginBottom: "55px" }}></div> */}
+            <div className='psudo-spacer'></div>
 
                 {alertContext !== undefined && 
                     <>
