@@ -1,3 +1,4 @@
+
 /* for large monitor scaling */
 @media screen and (max-width: 4800px) {
   header, nav, .nav-wrapper{
@@ -58,6 +59,17 @@
       padding-bottom: 40px;
       /* 4px */
   }
+
+  .authLinks li{
+    font-size: 3em;
+    padding-top: 25px;
+    /* none both */
+  }
+
+  .authLinks li a i{
+    font-size: 3em;
+    /* none */
+  }
   .colour-1-prime, .colour-2-prime, .colour-3-prime, .colour-4-prime{
     margin-top: 64px;
     /* no margin set */
@@ -68,15 +80,69 @@
     /* 55px */
 }
 
+.label-icon i{
+        font-size: 4rem;
+        /* 3rem */
+        padding-top: 10px;
+        /* none */
+}
+
+.nav-wrapper .input-field input[type="search"] {
+    padding-left: 5rem;
+    /* 4rem */
+  }
+
+.input-field input[type ="search"]:focus:not(.browser-default) {
+    padding-left: 5rem;
+    /* 4rem */
+  }
+  /* This needs to be put into materializeOverride.css under a media queary of the same dymentions */
+
+
+  .btn-floating > .material-icons {
+
+    font-size: 3.6rem;
+    /* 1.6rem */
+    
+  }
+
+  .btn-floating{
+    margin-left: 20px;
+    /* 10px */
+    margin-top: 70px;
+    /* none */
+    width: 80px;
+    /* 40px */
+    height: 80px;
+    /* 40px */
+    line-height: 100px;
+    /* 40px */
+  }
+
+  .input-field {
+    margin-top: 1.5rem;
+    /* 1rem */
+  }
+  
+
   .task-name {
-    font-size: 2.2em;
+    font-size: 3.2em;
+    /* 1.2 */
   }
+/* This needs to be put into materializeOverride.css under a media queary of the same dymentions */
+
+
   .calc-finished{
-    font-size: 1.9em;
+    font-size: 2.9em;
+    /* 1em */
   }
-  .material-icons {
-    font-size: 3rem;
+
+  .collapsible-header i {
+    font-size: 4rem;
+    /* 1.6rem */
   }
+
+  
 }
 
 @media screen and (max-width: 1800px) {

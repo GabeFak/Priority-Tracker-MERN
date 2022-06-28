@@ -43,13 +43,15 @@
   transition: .3s color;
 }
 
-.nav-wrapper .input-field input[type="search"] {
+/* .nav-wrapper .input-field input[type="search"] {
   height: inherit;
   padding-left: 4rem;
   width: calc(100% - 1em);
   border: 0;
   box-shadow: none;
-}
+} */
+
+/* Uncomment */
 
 .btn-floating {
   margin-left: 10px;
@@ -83,9 +85,10 @@
   margin-left: 15px;
 }
 
-.task-name {
+/* .task-name {
   font-size: 1.4em;
-}
+} */
+/* Uncomment */
 
 @media screen and (max-width: 775px) {
   .media-hide {

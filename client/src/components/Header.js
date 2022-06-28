@@ -16,7 +16,7 @@ const Header = () => {
     };
 
     const authLinks = (
-        <div>
+        <div className='authLinks'>
             <li>
                 Hello { user && user.name }
             </li>

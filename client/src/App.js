@@ -1,7 +1,7 @@
 //dependencies
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
-// import './AppScaleLarge.css';
+import './AppScaleLarge.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
