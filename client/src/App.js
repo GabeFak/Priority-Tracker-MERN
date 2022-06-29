@@ -14,7 +14,6 @@ import Dashboard from './components/Dashboard';
 import Header from './components/Header';
 
 //modals
-// import UpdateTaskModal from './components/modals/UpdateTaskModal';
 import UpdateTaskModal2 from './components/modals/UpdateTaskModal2';
 import NewTaskBacklogModal from './components/modals/NewTaskBacklogModal';
 import AddNewTaskStartedModal from './components/modals/AddNewTaskStartedModal';

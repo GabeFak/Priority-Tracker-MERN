@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const auth = require('../middleWare/auth');
-
 const User = require('../models/User');
 const UserData = require('../models/UserData');
-
 
 //@route   GET api/userData
 //@desc    Get all user's data.
@@ -17,7 +15,7 @@ router.get('/', auth, async (req, res) => {
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
-    }
+    };
 });
 
 //@route   POST api/userData
@@ -29,9 +27,10 @@ router.post('/', [auth, [
     check('isFinished', 'IsFinished is required').not().isEmpty()
 ]], async (req, res) => {
     const errors = validationResult(req);
+
     if(!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
-    }
+    };
 
     const { category, name, description, subTasks, tags, priority, isFinished, date } = req.body;
 
@@ -54,7 +53,7 @@ router.post('/', [auth, [
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
-    }
+    };
 });
 
 //@route   PUT api/userData/:id
@@ -118,8 +117,6 @@ router.delete('/:id', auth, async (req, res) => {
         res.status(500).send('Server Error');
     };
 });
-
-
 
 module.exports = router;
 
