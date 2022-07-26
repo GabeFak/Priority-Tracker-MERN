@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://LIZ:lzeLdqJxVLWco66G@prioritytrackercluster.afgq30b.mongodb.net/?retryWrites=true&w=majority",
+    "mongoURI": "mongodb+srv://GENUser:cotxNSS83O3oleyW@prioritytrackercluster.afgq30b.mongodb.net/?retryWrites=true&w=majority",
     "jwtSecret": "ThisIsASecret"
 }
